@@ -6,7 +6,7 @@ const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="dashboard" component={<DashboardScreen />} />
+      <Stack.Screen name="dashboard" component={DashboardScreen} options={{headerShown:false}}/>
     </Stack.Navigator>
   );
 };

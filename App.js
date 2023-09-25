@@ -1,20 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import AuthNavigator from "./src/navigations/AuthNavigator";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>QUIZOPEDIA</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <AuthNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
