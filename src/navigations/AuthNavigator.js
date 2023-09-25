@@ -3,11 +3,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import MainNavigator from "./MainNavigator";
 import RegisterScreen from "../screens/RegisterScreen";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
-  const isAuth = false;
+
+  const isAuth = useSelector(state=>state.auth.userData!==null);
+  console.log(useSelector(state=>state.auth.userData))
   return (
     <NavigationContainer>
       {isAuth ? (

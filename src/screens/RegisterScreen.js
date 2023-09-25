@@ -14,7 +14,7 @@ import logo from "../../assets/images/registerLogo.png";
 import { FontAwesome, Zocial, Entypo } from "@expo/vector-icons";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { child, getDatabase, ref, set } from "firebase/database";
-import { auth, db } from "../firebase/firebaseConfig";
+import { app, auth, db } from "../firebase/firebaseConfig";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 import { authenticate } from "../redux/authSlice";
 import { useDispatch } from "react-redux";
@@ -45,7 +45,8 @@ const RegisterScreen = ({ navigation }) => {
         userDetails.email,
         userDetails.password
       );
-      const { uid } = registerUser.user;
+      const { uid, stsTokenManager } = registerUser.user;
+      const { accessToken } = stsTokenManager;
       // console.log(uid);
 
       // SAVING USER DATA TO REALTIME DATABASE =====================================================>
@@ -59,7 +60,7 @@ const RegisterScreen = ({ navigation }) => {
         signUpDate: new Date().toISOString(),
       };
 
-      const dbRef = ref(getDatabase());
+      const dbRef = ref(getDatabase(app));
       const childRef = child(dbRef, `UserData/${uid}`);
       await set(childRef, userData);
 
@@ -74,10 +75,8 @@ const RegisterScreen = ({ navigation }) => {
 
       dispatch(
         authenticate({
-          userData: {
-            email: userDetails.email,
-            password: userDetails.password,
-          },
+          userData,
+          token:accessToken,
         })
       );
 
@@ -179,10 +178,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: 15,
-    marginVertical:10,
+    marginVertical: 10,
     paddingHorizontal: 10,
     backgroundColor: "#fbbd08",
-    // paddingVertical:2,
+    paddingVertical:2,
   },
   textInput: {
     flex: 1,
