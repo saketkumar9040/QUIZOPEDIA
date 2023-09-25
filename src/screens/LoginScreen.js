@@ -15,6 +15,8 @@ import Logo from "../../assets/images/loginLogo.png";
 import { Entypo, Zocial } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../redux/authSlice.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { child, get, getDatabase, ref } from "firebase/database";
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -51,10 +53,8 @@ const LoginScreen = ({navigation}) => {
 
       dispatch(
         authenticate({
-          userData: {
-            userData: snapshot.email,
-            token: snapshot.password,
-          },
+          userData : snapshot,
+          token:accessToken
         })
       );
 

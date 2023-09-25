@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => {
 
   const isAuth = useSelector(state=>state.auth.userData!==null);
-  console.log(useSelector(state=>state.auth.userData))
+
   return (
     <NavigationContainer>
       {isAuth ? (
