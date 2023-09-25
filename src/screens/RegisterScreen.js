@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 15,
     paddingHorizontal: 10,
-    backgroundColor: "#81d4fa",
+    backgroundColor: "#fbbd08",
     // paddingVertical:2,
   },
   textInput: {
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 20,
     alignSelf: "center",
-    backgroundColor: "#81d4fa",
+    backgroundColor: "#fbbd08",
     paddingHorizontal: 50,
     borderRadius: 10,
     elevation: 10,
@@ -211,19 +211,19 @@ const styles = StyleSheet.create({
   },
   newUserText: {
     fontSize: 18,
-    color: "#81d4fa",
+    color: "#fbbd08",
     fontWeight: "900",
     letterSpacing: 2,
   },
   registerButtonContainer: {
     paddingHorizontal: 30,
     borderWidth: 4,
-    borderColor: "#81d4fa",
+    borderColor: "#fbbd08",
     borderRadius: 10,
   },
   registerText: {
     textAlign: "center",
-    color: "#81d4fA",
+    color: "#fbbd08",
     fontSize: 20,
     fontWeight: "900",
     letterSpacing: 2,
