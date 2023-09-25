@@ -178,7 +178,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    margin: 15,
+    marginHorizontal: 15,
+    marginVertical:10,
     paddingHorizontal: 10,
     backgroundColor: "#fbbd08",
     // paddingVertical:2,
