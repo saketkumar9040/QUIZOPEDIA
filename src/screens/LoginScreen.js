@@ -1,7 +1,9 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { app } from '../firebase/firebaseConfig.js'
 
 const LoginScreen = () => {
+
   return (
    <SafeAreaView style={styles.container}>
       <View >
