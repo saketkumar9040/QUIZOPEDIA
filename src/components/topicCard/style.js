@@ -8,9 +8,11 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         borderRadius:10,
-        borderWidth:10,
+        borderWidth:2,
+        borderColor:"#c87137",
         margin:5,
-        flexWrap:"wrap"
+        backgroundColor:"#fff",
+        elevation:10,
     },
     text:{
         textAlign:"center"

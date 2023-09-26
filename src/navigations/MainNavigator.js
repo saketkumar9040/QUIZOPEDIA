@@ -1,11 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { Image } from 'react-native';
+
 import DashboardScreen from "../screens/dashboard";
 import ProfileScreen from "../screens/profile";
 import leaderBoardIcon from "../../assets/images/leaderboardIcon.png";
 import profileIcon from "../../assets/images/profile.png";
 import homeIcon from "../../assets/images/homeIcon.png"
-import { Image } from 'react-native';
+import LeaderBoardScreen from '../screens/leaderboard';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +34,7 @@ const MainNavigator = () => {
       />
       <Tab.Screen
         name="leaderboard"
-        component={ProfileScreen}
+        component={LeaderBoardScreen}
         options={{
            headerShown: false,
            tabBarIcon:()=><Image source={leaderBoardIcon} style={{height:50,
