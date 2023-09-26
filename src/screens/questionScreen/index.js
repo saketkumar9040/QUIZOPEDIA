@@ -7,20 +7,23 @@ const QuestionScreen = ({ navigation, route }) => {
   const data = route.params;
   console.log(data);
 
-  const [category,setCategory] = useState(data.code);
+  const [category,setCategory] = useState("");
   const [difficulty,setDifficulty] = useState("");
-  const [amouunt,setAmount] = useState(10);
+  const [amount,setAmount] = useState(10);
 
   const fetchData = async () => {
     const data = await axios.get(
-      `https://opentdb.com/api.php?amount=${amount}&category=${data.code}&difficulty=${difficulty}&type=multiple`
+      `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
     );
     console.log(data.data.results);
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if(data!==""){
+        setCategory(data.code)
+        fetchData();
+    }
+  }, [data]);
 
   return (
     <View>
