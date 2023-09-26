@@ -25,13 +25,18 @@ export const subjectList = [
     image:require("../images/geographyLogo.png"),
 },
 {
-    subject:"general Knowledge",
+    subject:"physics",
     code:"",
-    image:require("../images/gkLogo.png"),
+    image:require("../images/physicsLogo.png"),
 },
 {
-    subject:"general Knowledge",
+    subject:"biology",
     code:"",
-    image:require("../images/gkLogo.png"),
+    image:require("../images/biologyLogo.png"),
 },
-]
+{
+    subject:"chemistry",
+    code:"",
+    image:require("../images/chemistryLogo.png"),
+},
+];
