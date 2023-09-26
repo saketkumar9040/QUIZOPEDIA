@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   text: {
-    fontSize: 17,
-    fontWeight: "900",
+    fontSize: 15,
+    fontWeight: "700",
     letterSpacing: 1,
     color: "#7B3F00",
   },
