@@ -7,12 +7,11 @@ import homeIcon from "../../../assets/images/homeIcon.png"
 
 const QuestionScreen = ({ navigation, route }) => {
   const data = route.params;
-//   console.log(data);
 
-  const [category,setCategory] = useState("");
+  const [category,setCategory] = useState(data.code);
   const [difficulty,setDifficulty] = useState("");
   const [amount,setAmount] = useState(10);
-  const [ questions,setQuestions] = useState([])
+  const [questions,setQuestions] = useState([]);
 
   const fetchData = async () => {
     const data = await axios.get(
@@ -23,11 +22,8 @@ const QuestionScreen = ({ navigation, route }) => {
   };
 
   useEffect(() => {
-    if(data!==""){
-        setCategory(data.code)
         fetchData();
-    }
-  }, [data]);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -45,13 +41,31 @@ const QuestionScreen = ({ navigation, route }) => {
             </TouchableOpacity>
         </View>
       <View >
-          {questions.map((item,index)=>{
+          {/* {questions.map((item,index)=>{
             return(
                 <View key={index} style={styles.questionContainer}>
                 <Text>{item.question}</Text>
                 </View>
             );
-          })}
+          })} */}
+          <View style={styles.questionContainer}>
+            <Text style={styles.questionText}>{questions[0]?.question}</Text>
+            <View style={styles.optionsContainer}>
+                <TouchableOpacity>
+                    <Text>{questions[0]?.correct_answer}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text>{questions[0]?.incorrect_answers[0]}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text>{questions[0]?.incorrect_answers[1]}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text>{questions[0]?.incorrect_answers[2]}</Text>
+                </TouchableOpacity>
+
+            </View>
+          </View>
       </View>
     </View>
   );

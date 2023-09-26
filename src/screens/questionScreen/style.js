@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
   },
   prevText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "800",
     color: "#fff",
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius:40
   },
   nextText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "800",
     color: "#fff",
   },
@@ -53,7 +53,17 @@ const styles = StyleSheet.create({
   },
   questionContainer: {
     marginTop: 50,
+    padding:10,
+    padding:40,
+    marginHorizontal:20,
+    backgroundColor:"#F4D03F",
+    borderRadius:40,
   },
+  questionText:{
+    fontSize:25,
+    fontWeight:"700",
+    color:"#fff"
+  }
 });
 
 export default styles;
