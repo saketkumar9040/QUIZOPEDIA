@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: "#fff",
     elevation: 10,
-    gap: 20,
+    gap:10,
   },
   image: {
     width: 100,

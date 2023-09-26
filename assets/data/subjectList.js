@@ -15,14 +15,14 @@ export const subjectList = [
     image:require("../images/historyLogo.png"),
 },
 {
-    subject:"general Knowledge",
+    subject:"Polity",
     code:"",
-    image:require("../images/gkLogo.png"),
+    image:require("../images/polityLogo.png"),
 },
 {
-    subject:"general Knowledge",
+    subject:"geogrophy",
     code:"",
-    image:require("../images/gkLogo.png"),
+    image:require("../images/geographyLogo.png"),
 },
 {
     subject:"general Knowledge",
