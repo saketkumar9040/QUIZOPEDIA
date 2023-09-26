@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     fontWeight:"700",
     color:"#f4d03f",
     // textAlign:"center",
+    letterSpacing:2
   }
 });
 

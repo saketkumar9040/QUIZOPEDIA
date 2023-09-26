@@ -51,7 +51,7 @@ const QuestionScreen = ({ navigation, route }) => {
           <View style={styles.questionContainer}>
             <Text style={styles.questionText}>{questions[0]?.question}</Text>
             <View style={styles.optionsContainer}>
-                <TouchableOpacity style={styles.option}>
+                <TouchableOpacity style={styles.option} onPress={(e)=>console.log(e.target)}>
                     <Text style={styles.optionText}>{questions[0]?.correct_answer}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.option}>
