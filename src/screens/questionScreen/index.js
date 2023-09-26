@@ -1,7 +1,8 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./style";
 import axios from "axios";
+import { Feather } from "@expo/vector-icons";
 
 const QuestionScreen = ({ navigation, route }) => {
   const data = route.params;
@@ -29,6 +30,16 @@ const QuestionScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+        <View style={styles.prevNextContainer}>
+            <TouchableOpacity style={styles.prevContainer}>
+            <Feather name="arrow-left" size={24} color="#fff" />
+                <Text style={styles.prevText}>PREV</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.nextContainer}>
+                <Text style={styles.nextText}>NEXT</Text>
+                <Feather name="arrow-right" size={24} color="#fff" />
+            </TouchableOpacity>
+        </View>
       <View style={styles.questionText}>
           {questions.map((item,index)=>{
             return(
