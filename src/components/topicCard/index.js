@@ -6,7 +6,7 @@ import logo from "../../../assets/images/physicsLogo.png"
 const TopicCard = ({image,subject}) => {
   return (
     <View style={styles.container}>
-    <Image source={logo} style={styles.image}/>
+    <Image source={image} style={styles.image}/>
       <Text style={styles.text}>{`${subject}`.toUpperCase()}</Text>
     </View>
   )
