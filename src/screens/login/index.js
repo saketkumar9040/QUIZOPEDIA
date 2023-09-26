@@ -22,8 +22,8 @@ import {
     const dispatch = useDispatch();
   
     const [userDetails, setUserDetails] = useState({
-      email: "",
-      password: "",
+      email: "saket@gmail.com",
+      password: "123456",
     });
   
     const submitHandler = async () => {
