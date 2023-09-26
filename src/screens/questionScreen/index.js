@@ -1,8 +1,9 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./style";
 import axios from "axios";
 import { Feather } from "@expo/vector-icons";
+import homeIcon from "../../../assets/images/homeIcon.png"
 
 const QuestionScreen = ({ navigation, route }) => {
   const data = route.params;
@@ -35,15 +36,18 @@ const QuestionScreen = ({ navigation, route }) => {
             <Feather name="arrow-left" size={24} color="#fff" />
                 <Text style={styles.prevText}>PREV</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate("home")}>
+            <Image source={homeIcon} style={styles.homeIcon}/>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.nextContainer}>
                 <Text style={styles.nextText}>NEXT</Text>
                 <Feather name="arrow-right" size={24} color="#fff" />
             </TouchableOpacity>
         </View>
-      <View style={styles.questionText}>
+      <View >
           {questions.map((item,index)=>{
             return(
-                <View key={index}>
+                <View key={index} style={styles.questionContainer}>
                 <Text>{item.question}</Text>
                 </View>
             );
