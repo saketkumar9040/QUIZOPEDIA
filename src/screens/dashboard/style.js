@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         flexWrap:"wrap",
         marginTop:20,
+        padding:5,
     }
 });
 

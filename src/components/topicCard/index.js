@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text,Image } from 'react-native'
 import React from 'react';
 import styles from './style';
+import logo from "../../../assets/images/physicsLogo.png"
 
-const TopicCard = () => {
+const TopicCard = ({image,subject}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>TopicCard</Text>
+    <Image source={logo} style={styles.image}/>
+      <Text style={styles.text}>{`${subject}`.toUpperCase()}</Text>
     </View>
   )
 }
