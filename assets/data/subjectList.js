@@ -1,42 +1,42 @@
 export const subjectList = [
 {
     subject:"general Knowledge",
-    code:"",
+    code:"9",
     image:require("../images/gkLogo.png"),
 },
 {
     subject:"general Science",
-    code:"",
+    code:"17",
     image:require("../images/scienceLogo.png"),
 },
 {
     subject:"history",
-    code:"",
+    code:"23",
     image:require("../images/historyLogo.png"),
 },
 {
     subject:"Polity",
-    code:"",
+    code:"24",
     image:require("../images/polityLogo.png"),
 },
 {
     subject:"geogrophy",
-    code:"",
+    code:"22",
     image:require("../images/geographyLogo.png"),
 },
 {
-    subject:"physics",
-    code:"",
-    image:require("../images/physicsLogo.png"),
+    subject:"computer",
+    code:"18",
+    image:require("../images/computerLogo.png"),
 },
 {
-    subject:"biology",
-    code:"",
-    image:require("../images/biologyLogo.png"),
+    subject:"mathematics",
+    code:"19",
+    image:require("../images/mathLogo.png"),
 },
 {
-    subject:"chemistry",
-    code:"",
-    image:require("../images/chemistryLogo.png"),
+    subject:"sports",
+    code:"21",
+    image:require("../images/sportsLogo.png"),
 },
 ];
