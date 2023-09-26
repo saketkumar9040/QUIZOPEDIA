@@ -74,15 +74,17 @@ const styles = StyleSheet.create({
   },
   option:{
     backgroundColor:"#fff",
+    alignItems:"center",
     margin:10,
     padding:10,
     borderRadius:10,
+    width:250
   },
   optionText:{
     fontSize:20,
     fontWeight:"700",
     color:"#f4d03f",
-    textAlign:"center",
+    // textAlign:"center",
   }
 });
 
