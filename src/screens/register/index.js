@@ -13,7 +13,7 @@ import {
   import { FontAwesome, Zocial, Entypo } from "@expo/vector-icons";
   import { createUserWithEmailAndPassword } from "firebase/auth";
   import { child, getDatabase, ref, set } from "firebase/database";
-  import { app, auth, db } from "./../firebase/firebaseConfig";
+  import { app, auth, db } from "../../firebase/firebaseConfig";
   // import AsyncStorage from "@react-native-async-storage/async-storage";
   import { authenticate } from "../../redux/authSlice";
   import { useDispatch } from "react-redux";
