@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         elevation:10, 
         paddingTop:40,  
+        paddingBottom:10
     },
     logo:{
         width:300,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:"row",
         flexWrap:"wrap",
-        marginTop:20,
+        marginTop:10,
         padding:5,
     }
 });

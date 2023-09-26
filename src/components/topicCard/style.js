@@ -21,10 +21,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   text: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "700",
     letterSpacing: 1,
     color: "#7B3F00",
+    textAlign:"center",
+    padding:5,
+    paddingHorizontal:20,
   },
 });
 

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
+import { View, Text, SafeAreaView, Image,ScrollView } from "react-native";
 import React, { useEffect } from "react";
 import styles from "./style";
 import logo from "../../../assets/images/dashboardLogo.png";
@@ -21,6 +21,7 @@ const DashboardScreen = () => {
       <View style={styles.logoContainer}>
         <Image source={logo} style={styles.logo} />
       </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.topicContainer}>
           {
              subjectList.map((item,index)=>{
@@ -32,6 +33,7 @@ const DashboardScreen = () => {
              })
           }
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
