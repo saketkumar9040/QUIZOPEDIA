@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   questionContainer: {
+    alignItems:"center",
     marginTop: 50,
     padding:10,
     padding:40,
@@ -63,6 +64,25 @@ const styles = StyleSheet.create({
     fontSize:25,
     fontWeight:"700",
     color:"#fff"
+  },
+  optionsContainer:{
+    flexDirection:"row",
+    flexWrap:"wrap",
+    justifyContent:"space-between",
+    marginTop:40,
+    elevation:10,
+  },
+  option:{
+    backgroundColor:"#fff",
+    margin:10,
+    padding:10,
+    borderRadius:10,
+  },
+  optionText:{
+    fontSize:20,
+    fontWeight:"700",
+    color:"#f4d03f",
+    textAlign:"center",
   }
 });
 
