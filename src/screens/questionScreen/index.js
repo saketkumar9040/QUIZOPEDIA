@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, Image, FlatList, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./style";
 import axios from "axios";
@@ -28,26 +28,14 @@ const QuestionScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.prevNextContainer}>
-        <TouchableOpacity style={styles.prevContainer}>
-          <Feather name="arrow-left" size={24} color="#fff" />
-          <Text style={styles.prevText}>PREV</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("home")}>
-          <Image source={homeIcon} style={styles.homeIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.nextContainer}>
-          <Text style={styles.nextText}>NEXT</Text>
-          <Feather name="arrow-right" size={24} color="#fff" />
-        </TouchableOpacity>
-      </View>
-      <View>
+      <View style={{flex:1,}}>
         <FlatList
           horizontal
+          pagingEnabled
           showsHorizontalScrollIndicator={false}
           data={questions}
           renderItem={({item,index}) => {
-            return <QuestionCard question={item} index={index}/>;
+            return <QuestionCard question={item} index={index} navigation={navigation}/>;
           }}
         />
       </View>
