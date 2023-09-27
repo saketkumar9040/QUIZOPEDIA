@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         width:width-40,
       },
       questionNumber:{
-          fontSize:30,
+          fontSize:20,
           color:"#fff",
           fontWeight:"900",
           marginBottom:20,
