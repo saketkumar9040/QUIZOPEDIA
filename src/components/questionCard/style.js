@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
       questionHeaderContainer:{
         flexDirection:"row",
         alignItems:"center",
-        justifyContent:"space-around",
-        gap:20,
+        justifyContent:"space-between",
+        gap:29,
+        marginBottom:30,
       },
       questionNumber:{
           fontSize:20,
