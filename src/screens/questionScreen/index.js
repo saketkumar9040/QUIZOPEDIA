@@ -35,7 +35,8 @@ const QuestionScreen = ({ navigation, route }) => {
           showsHorizontalScrollIndicator={false}
           data={questions}
           renderItem={({item,index}) => {
-            return <QuestionCard question={item} index={index} navigation={navigation}/>;
+            const isLastIndex = questions.length-1 === index;
+            return <QuestionCard question={item} index={index} navigation={navigation} isLastIndex={isLastIndex}/>;
           }}
         />
       </View>
