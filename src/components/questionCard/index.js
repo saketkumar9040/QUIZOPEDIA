@@ -6,7 +6,7 @@ const QuestionCard = ({question,index}) => {
     const options = [question.correct_answer,...question.incorrect_answers].sort();
   return (
     <View style={styles.questionContainer}>
-      {/* <Text style={styles.questionNumber}>Question no - {index + 1}</Text> */}
+      <Text style={styles.questionNumber}>Question no - {index + 1}</Text>
       <Text style={styles.questionText}>{question.question}</Text>
       <View style={styles.optionsContainer}>
         {
