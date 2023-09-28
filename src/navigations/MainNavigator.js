@@ -10,6 +10,7 @@ import QuestionScreen from '../screens/questionScreen';
 import leaderBoardIcon from "../../assets/images/leaderboardIcon.png";
 import profileIcon from "../../assets/images/profile.png";
 import homeIcon from "../../assets/images/homeIcon.png"
+import ScoreScreen from '../screens/scoreScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -67,6 +68,7 @@ const MainNavigator = () => {
     <Stack.Navigator>
     <Stack.Screen name="home" component={TabNavigator} options={{headerShown:false}}/>
     <Stack.Screen name="question" component={QuestionScreen} options={{headerShown:false}}/>
+    <Stack.Screen name="score" component={ScoreScreen} options={{headerShown:false}}/>
   </Stack.Navigator>
   );
 };

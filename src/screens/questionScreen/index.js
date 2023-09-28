@@ -15,6 +15,7 @@ const QuestionScreen = ({ navigation, route }) => {
   const [amount, setAmount] = useState(10);
   const [questions, setQuestions] = useState([]);
   const [ lastMinute,setLastMinute] = useState(false);
+  const [ score,setScore] =  useState(7);
 
   const fetchData = async () => {
     const data = await axios.get(
@@ -34,8 +35,8 @@ const QuestionScreen = ({ navigation, route }) => {
         {questions.length > 0 ? (
           <>
             <CountDown
-              until={300}
-              onFinish={() => alert("finished")}
+              until={90}
+              onFinish={() => navigation.navigate("score",score)}
               digitStyle={{backgroundColor: lastMinute ?"red":"#1CC625"}}
               digitTxtStyle={{color: '#fff'}}
               size={20}
