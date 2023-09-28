@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     paddingTop: 40,
-    // alignItems: "center",
     backgroundColor:"#fff",
   },
   congratsContainer: {
@@ -45,8 +44,8 @@ const styles = StyleSheet.create({
      paddingHorizontal:20,
   },
   homeIcon: {
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
     resizeMode: "contain",
     marginVertical: 10,
   },
