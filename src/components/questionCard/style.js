@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         marginHorizontal:20,
       },
       optionsContainer:{
+        flex:1,
         flexDirection:"row",
         flexWrap:"wrap",
         alignItems:"center",
@@ -111,6 +112,13 @@ const styles = StyleSheet.create({
         width: 50,
         resizeMode: "contain",
         marginVertical: 10,
+      },
+      clearResponseContainer:{
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:5,
+        borderRadius:30
       },
 });
 

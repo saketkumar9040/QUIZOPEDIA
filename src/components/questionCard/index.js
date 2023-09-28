@@ -1,7 +1,7 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import styles from "./style";
-import { Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { Feather, FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import homeIcon from "../../../assets/images/homeIcon.png";
 
 const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
@@ -9,7 +9,6 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
     question.correct_answer,
     ...question.incorrect_answers,
   ].sort();
-
 
   return (
     <View style={styles.container}>
@@ -30,8 +29,8 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
               <TouchableOpacity
                 style={styles.option}
                 onPress={() => {
-                    console.log()
-                    console.log(ind,ele)
+                  console.log();
+                  console.log(ind, ele);
                 }}
                 key={ind}
               >
@@ -40,6 +39,9 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
             );
           })}
         </View>
+        <TouchableOpacity style={styles.clearResponseContainer}>
+          <Ionicons name="refresh-circle" size={50} color="#fff" />
+        </TouchableOpacity>
       </View>
       <View style={styles.prevNextContainer}>
         {index > 0 && (
@@ -51,8 +53,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
         <TouchableOpacity onPress={() => navigation.navigate("home")}>
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
-        {
-             !isLastIndex ? (
+        {!isLastIndex ? (
           <TouchableOpacity style={styles.nextContainer}>
             <Text style={styles.nextText}>NEXT</Text>
             <Feather name="arrow-right" size={24} color="#fff" />

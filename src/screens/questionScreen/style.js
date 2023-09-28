@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     width:300,
     resizeMode:"contain"
   }
- 
 });
 
 export default styles;
