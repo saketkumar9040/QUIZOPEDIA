@@ -12,6 +12,7 @@ const ScoreScreen = ({navigation,route}) => {
     const [ scoreColor,setScoreColor] = useState("");
     const [ greetText,setGreetText] = useState("");
 
+
     useEffect(()=>{
         if(score !== undefined){
            if(score <5){
@@ -25,7 +26,7 @@ const ScoreScreen = ({navigation,route}) => {
             setGreetText("EXCELLENT, KEEP UP THE GOOD WORK🙂");
            }
         }
-    },[score]);
+    },[]);
 
   return (
     <SafeAreaView style={styles.mainContainer}>

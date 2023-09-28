@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CountDown from "react-native-countdown-component";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 import styles from "./style";
 import smilyCartoon from "../../../assets/images/smilyCartoon.png";
@@ -14,8 +14,8 @@ const QuestionScreen = ({ navigation, route }) => {
   const [difficulty, setDifficulty] = useState("");
   const [amount, setAmount] = useState(10);
   const [questions, setQuestions] = useState([]);
-  const [ lastMinute,setLastMinute] = useState(false);
-  const [ score,setScore] =  useState(7);
+  const [lastMinute, setLastMinute] = useState(false);
+  const [score, setScore] = useState(7);
 
   const fetchData = async () => {
     const data = await axios.get(
@@ -31,24 +31,20 @@ const QuestionScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1,alignItems:'center' }}>
         {questions.length > 0 ? (
           <>
-            <CountDown
-              until={90}
-              onFinish={() => navigation.navigate("score",{score:score})}
-              digitStyle={{backgroundColor: lastMinute ?"red":"#1CC625"}}
-              digitTxtStyle={{color: '#fff'}}
-              size={20}
-              timeToShow={["M", "S"]}
-              timeLabels={{ m: "", s: "" }}
-              showSeparator
-              onChange={(e)=>{
-                if(e<60){
-                  setLastMinute(true)
-                }
-              }}
-            />
+            <CountdownCircleTimer
+              isPlaying
+              duration={30}
+              colors={["#00ff00", "#ffff00","#FFA500","#A30000"]}
+              colorsTime={[30, 22, 8, 0]}
+              size={80}
+              onComplete={()=>navigation.navigate("score",{score:score})}
+            >
+              {({ remainingTime }) => <Text style={{fontSize:20,fontWeight:"900",color:"#00f7ff"}}>{remainingTime}</Text>}
+            </CountdownCircleTimer>
+
             <FlatList
               horizontal
               pagingEnabled

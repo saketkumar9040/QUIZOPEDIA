@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
       },
       optionsContainer:{
         flex:1,
-        flexDirection:"row",
-        flexWrap:"wrap",
         alignItems:"center",
         justifyContent:"center",
         marginTop:40,
@@ -114,9 +112,9 @@ const styles = StyleSheet.create({
         marginVertical: 10,
       },
       clearResponseContainer:{
-        flexDirection:"row",
+        // flexDirection:"row",
         alignItems:"center",
-        justifyContent:"center",
+        // justifyContent:"center",
         marginBottom:5,
         borderRadius:30
       },
