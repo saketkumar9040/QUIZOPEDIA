@@ -36,7 +36,7 @@ const QuestionScreen = ({ navigation, route }) => {
           <>
             <CountDown
               until={90}
-              onFinish={() => navigation.navigate("score",score)}
+              onFinish={() => navigation.navigate("score",{score:score})}
               digitStyle={{backgroundColor: lastMinute ?"red":"#1CC625"}}
               digitTxtStyle={{color: '#fff'}}
               size={20}
