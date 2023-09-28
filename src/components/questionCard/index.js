@@ -9,6 +9,8 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
     question.correct_answer,
     ...question.incorrect_answers,
   ].sort();
+
+
   return (
     <View style={styles.container}>
       <View style={styles.questionContainer}>
@@ -23,14 +25,17 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
         </View>
         <Text style={styles.questionText}>{question.question}</Text>
         <View style={styles.optionsContainer}>
-          {options.map((item, index) => {
+          {options.map((ele, ind) => {
             return (
               <TouchableOpacity
                 style={styles.option}
-                onPress={() => console.log(item)}
-                key={index}
+                onPress={() => {
+                    console.log()
+                    console.log(ind,ele)
+                }}
+                key={ind}
               >
-                <Text style={styles.optionText}>{item}</Text>
+                <Text style={styles.optionText}>{ele}</Text>
               </TouchableOpacity>
             );
           })}

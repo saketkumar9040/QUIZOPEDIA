@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
       questionHeaderContainer:{
         flexDirection:"row",
         alignItems:"center",
-        justifyContent:"space-between",
-        gap:29,
+        justifyContent:"space-around",
+        gap:15,
         marginBottom:30,
       },
       questionNumber:{
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
           borderBottomLeftRadius:30,
           borderBottomRightRadius:30,
           textAlign:"center",
-          padding:10,
+          padding:5,
       },
       questionText:{
         fontSize:20,

@@ -1,9 +1,14 @@
-import { View, Text, TouchableOpacity, Image, FlatList, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./style";
 import axios from "axios";
-import { Feather } from "@expo/vector-icons";
-import homeIcon from "../../../assets/images/homeIcon.png";
+import smilyCartoon from "../../../assets/images/smilyCartoon.png";
 import QuestionCard from "../../components/questionCard";
 
 const QuestionScreen = ({ navigation, route }) => {
@@ -28,17 +33,31 @@ const QuestionScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{flex:1,}}>
-        <FlatList
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          data={questions}
-          renderItem={({item,index}) => {
-            const isLastIndex = questions.length-1 === index;
-            return <QuestionCard question={item} index={index} navigation={navigation} isLastIndex={isLastIndex}/>;
-          }}
-        />
+      <View style={{ flex: 1 }}>
+        {questions.length > 0 ? (
+          <FlatList
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            data={questions}
+            renderItem={({ item, index }) => {
+              const isLastIndex = questions.length - 1 === index;
+              return (
+                <QuestionCard
+                  question={item}
+                  index={index}
+                  navigation={navigation}
+                  isLastIndex={isLastIndex}
+                />
+              );
+            }}
+          />
+        ) : (
+          <View style={styles.pleaseWaitContainer}>
+            <Image source={smilyCartoon} style={styles.smilyCartoonImage}/>
+            <Text style={styles.pleaseWaitText}>Please Wait while Quiz is starting...</Text>
+          </View>
+        )}
       </View>
     </View>
   );

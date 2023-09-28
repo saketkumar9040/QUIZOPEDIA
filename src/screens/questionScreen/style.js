@@ -52,6 +52,23 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginVertical: 10,
   },
+  pleaseWaitContainer:{
+    flex:1,
+    backgroundColor:"#fff",
+    alignItems:"center",
+    justifyContent:"center"
+  },
+  pleaseWaitText:{
+    fontSize:30,
+    fontWeight:"900",
+    color:"#f4d03f",
+    textAlign:"center"
+  },
+  smilyCartoonImage:{
+    height:300,
+    width:300,
+    resizeMode:"contain"
+  }
  
 });
 
