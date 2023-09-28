@@ -15,13 +15,13 @@ const ScoreScreen = ({navigation,route}) => {
     useEffect(()=>{
         if(score !== undefined){
            if(score <5){
-            setScoreColor("red");
+            setScoreColor("#FF3131");
             setGreetText("SEEMS IT WAS A BAD DAY, DON'T WORRY TRY HARDER AGAIN 🙂");
            }else if (score > 4 && score < 8){
-            setScoreColor("green");
+            setScoreColor("#FFBF00");
             setGreetText("WELL DONE,LOOKS LIKE HARD WORK IS PAYING YOU OFF🤗");
            }else{
-            setScoreColor("#FFC000");
+            setScoreColor("#7CFC00");
             setGreetText("EXCELLENT, KEEP UP THE GOOD WORK🙂");
            }
         }
