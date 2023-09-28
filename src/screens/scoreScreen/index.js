@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import tropyLogo from "../../../assets/images/trophyLogo.png"
 import homeIcon from "../../../assets/images/homeIcon.png"
+import retryButton from "../../../assets/images/retryButton.png"
 
 import styles from './style';
 
@@ -25,7 +26,7 @@ const ScoreScreen = ({navigation,route}) => {
            }
         }
     },[score]);
-    
+
   return (
     <SafeAreaView style={styles.mainContainer}>
         <View style={styles.congratsContainer}>
@@ -38,9 +39,14 @@ const ScoreScreen = ({navigation,route}) => {
            <Text style={styles.scoreText}>YOUR SCORE IS</Text>
            <Text style={{...styles.congratsText,fontSize:55,color:scoreColor}}>{score}</Text>
         </View>
+        <View style={styles.bottomContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("home")}>
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("home")}>
+          <Image source={retryButton} style={styles.retryBotton} />
+        </TouchableOpacity>
+        </View>
     </SafeAreaView>
   )
 }
