@@ -7,7 +7,7 @@ import retryButton from "../../../assets/images/retryButton.png"
 import styles from './style';
 
 const ScoreScreen = ({navigation,route}) => {
-    // console.log(route.params.score);
+    console.log(route.params.score);
     const score = route.params.score;
     const [ scoreColor,setScoreColor] = useState("");
     const [ greetText,setGreetText] = useState("");
@@ -37,7 +37,7 @@ const ScoreScreen = ({navigation,route}) => {
       </View>
       <View style={styles.scoreContainer}>
            <Text style={styles.scoreText}>YOUR SCORE IS</Text>
-           <Text style={{...styles.congratsText,fontSize:55,color:scoreColor}}>{score}</Text>
+           <Text style={{...styles.congratsText,fontSize:55,color:scoreColor}}>{score} / 10</Text>
         </View>
         <View style={styles.bottomContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("home")}>

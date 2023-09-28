@@ -1,32 +1,71 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
-import styles from "./style";
 import {
-  Feather,
-  FontAwesome,
-  Ionicons,
-  MaterialIcons,
+    Feather,
+    FontAwesome,
+    Ionicons,
+    MaterialIcons,
 } from "@expo/vector-icons";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
+
+import styles from "./style";
 import homeIcon from "../../../assets/images/homeIcon.png";
+import { useDispatch, useSelector } from "react-redux";
+import { calculateScore, clearScore } from "../../redux/scoreSlice";
+
 
 const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
 
-    // const [optionFocus,setOptionFocus]= useState(false);
+    const dispatch = useDispatch();
+    const score = useSelector(state=>state.score.finalScore);
+    // console.log(score)
     const [selectedOption,setSelectedOption] = useState("");
+
     const correctAnswer = question.correct_answer;
-    // console.log(correctAnswer);
+    console.log(correctAnswer);
 
   const options = [
     question.correct_answer,
     ...question.incorrect_answers,
   ].sort();
 
-  const selectOptionHandler = async (ele) => {
-      console.log(ele)
+  const calculateScoreHandler = async () => {
+      if(selectedOption == correctAnswer){
+        dispatch(calculateScore({score:1}))
+      }
+      navigation.navigate("score",{score:score});
+    //   dispatch(clearScore());
   }
 
   return (
     <View style={styles.container}>
+        <View style={{alignItems:"center"}}>
+          <CountdownCircleTimer
+              isPlaying
+              duration={ 60}
+              colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
+              colorsTime={[300, 220, 80, 0]}
+              size={80}
+              onComplete={() => calculateScoreHandler()}
+              isSmoothColorTransition
+            >
+              {({ remainingTime }) => {
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                return (
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: "900",
+                      color: "#00f7ff",
+                    }}
+                  >
+                    {`${minutes}:${seconds}`}
+                  </Text>
+                );
+              }}
+            </CountdownCircleTimer>
+        </View>
       <View style={styles.questionContainer}>
         <View style={styles.questionHeaderContainer}>
           <TouchableOpacity>
@@ -46,7 +85,6 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
                 style={ele === selectedOption ?{...styles.option,backgroundColor:"green"}:styles.option}
                 onPress={() => {
                     setSelectedOption(ele);
-                   selectOptionHandler(ele);
                 }}
               >
                 <Text style={ele === selectedOption?{...styles.optionText,color:"#fff"}:styles.optionText}>{ele}</Text>
@@ -78,6 +116,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
         ) : (
           <TouchableOpacity
             style={{ ...styles.nextContainer, backgroundColor: "green" }}
+            onPress={()=>calculateScoreHandler()}
           >
             <Text style={styles.nextText}>SUBMIT</Text>
             <Feather name="arrow-right" size={24} color="#fff" />

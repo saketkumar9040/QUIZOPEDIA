@@ -27,39 +27,13 @@ const QuestionScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
 
   return (
     <View style={styles.container}>
       <View style={{ flex: 1, alignItems: "center" }}>
         {questions.length > 0 ? (
           <>
-            <CountdownCircleTimer
-              isPlaying
-              duration={5 * 60}
-              colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
-              colorsTime={[300, 220, 80, 0]}
-              size={80}
-              onComplete={() => navigation.navigate("score", { score: score })}
-              isSmoothColorTransition
-            >
-              {({ remainingTime }) => {
-                const minutes = Math.floor(remainingTime / 60);
-                const seconds = remainingTime % 60;
-                return (
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontWeight: "900",
-                      color: "#00f7ff",
-                    }}
-                  >
-                    {`${minutes}:${seconds}`}
-                  </Text>
-                );
-              }}
-            </CountdownCircleTimer>
-
             <FlatList
               horizontal
               pagingEnabled
