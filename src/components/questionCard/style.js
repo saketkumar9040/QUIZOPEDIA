@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
     questionContainer: {
         flex:1,
         alignItems:"center",
-        marginTop: 50,
-        // padding:40,
+        marginTop: 10,
         marginHorizontal:20,
         backgroundColor:"#F4D03F",
         borderRadius:40,

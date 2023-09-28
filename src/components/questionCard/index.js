@@ -1,14 +1,29 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style";
-import { Feather, FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Feather,
+  FontAwesome,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import homeIcon from "../../../assets/images/homeIcon.png";
 
 const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
+
+    // const [optionFocus,setOptionFocus]= useState(false);
+    const [selectedOption,setSelectedOption] = useState("");
+    const correctAnswer = question.correct_answer;
+    // console.log(correctAnswer);
+
   const options = [
     question.correct_answer,
     ...question.incorrect_answers,
   ].sort();
+
+  const selectOptionHandler = async (ele) => {
+      console.log(ele)
+  }
 
   return (
     <View style={styles.container}>
@@ -27,19 +42,21 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
           {options.map((ele, ind) => {
             return (
               <TouchableOpacity
-                style={styles.option}
-                onPress={() => {
-                  console.log();
-                  console.log(ind, ele);
-                }}
                 key={ind}
+                style={ele === selectedOption ?{...styles.option,backgroundColor:"green"}:styles.option}
+                onPress={() => {
+                    setSelectedOption(ele);
+                   selectOptionHandler(ele);
+                }}
               >
-                <Text style={styles.optionText}>{ele}</Text>
+                <Text style={ele === selectedOption?{...styles.optionText,color:"#fff"}:styles.optionText}>{ele}</Text>
               </TouchableOpacity>
             );
           })}
         </View>
-        <TouchableOpacity style={styles.clearResponseContainer}>
+        <TouchableOpacity style={styles.clearResponseContainer} onPress={()=>{
+            setSelectedOption("");
+        }}>
           <Ionicons name="refresh-circle" size={50} color="#fff" />
         </TouchableOpacity>
       </View>
