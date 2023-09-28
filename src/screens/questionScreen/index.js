@@ -38,7 +38,7 @@ const QuestionScreen = ({ navigation, route }) => {
               isPlaying
               duration={5 * 60}
               colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
-              colorsTime={[30, 22, 8, 0]}
+              colorsTime={[300, 220, 80, 0]}
               size={80}
               onComplete={() => navigation.navigate("score", { score: score })}
               isSmoothColorTransition
