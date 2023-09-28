@@ -31,18 +31,33 @@ const QuestionScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1,alignItems:'center' }}>
+      <View style={{ flex: 1, alignItems: "center" }}>
         {questions.length > 0 ? (
           <>
             <CountdownCircleTimer
               isPlaying
-              duration={30}
-              colors={["#00ff00", "#ffff00","#FFA500","#A30000"]}
+              duration={5 * 60}
+              colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
               colorsTime={[30, 22, 8, 0]}
               size={80}
-              onComplete={()=>navigation.navigate("score",{score:score})}
+              onComplete={() => navigation.navigate("score", { score: score })}
+              isSmoothColorTransition
             >
-              {({ remainingTime }) => <Text style={{fontSize:20,fontWeight:"900",color:"#00f7ff"}}>{remainingTime}</Text>}
+              {({ remainingTime }) => {
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                return (
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: "900",
+                      color: "#00f7ff",
+                    }}
+                  >
+                    {`${minutes}:${seconds}`}
+                  </Text>
+                );
+              }}
             </CountdownCircleTimer>
 
             <FlatList

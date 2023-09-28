@@ -1,9 +1,9 @@
 import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react';
+
 import tropyLogo from "../../../assets/images/trophyLogo.png"
 import homeIcon from "../../../assets/images/homeIcon.png"
 import retryButton from "../../../assets/images/retryButton.png"
-
 import styles from './style';
 
 const ScoreScreen = ({navigation,route}) => {
@@ -11,7 +11,6 @@ const ScoreScreen = ({navigation,route}) => {
     const score = route.params.score;
     const [ scoreColor,setScoreColor] = useState("");
     const [ greetText,setGreetText] = useState("");
-
 
     useEffect(()=>{
         if(score !== undefined){
