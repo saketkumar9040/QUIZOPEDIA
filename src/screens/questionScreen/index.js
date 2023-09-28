@@ -1,13 +1,9 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
-import styles from "./style";
 import axios from "axios";
+import CountDown from "react-native-countdown-component";
+
+import styles from "./style";
 import smilyCartoon from "../../../assets/images/smilyCartoon.png";
 import QuestionCard from "../../components/questionCard";
 
@@ -18,6 +14,7 @@ const QuestionScreen = ({ navigation, route }) => {
   const [difficulty, setDifficulty] = useState("");
   const [amount, setAmount] = useState(10);
   const [questions, setQuestions] = useState([]);
+  const [ lastMinute,setLastMinute] = useState(false);
 
   const fetchData = async () => {
     const data = await axios.get(
@@ -35,27 +32,46 @@ const QuestionScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
         {questions.length > 0 ? (
-          <FlatList
-            horizontal
-            pagingEnabled
-            showsHorizontalScrollIndicator={false}
-            data={questions}
-            renderItem={({ item, index }) => {
-              const isLastIndex = questions.length - 1 === index;
-              return (
-                <QuestionCard
-                  question={item}
-                  index={index}
-                  navigation={navigation}
-                  isLastIndex={isLastIndex}
-                />
-              );
-            }}
-          />
+          <>
+            <CountDown
+              until={300}
+              onFinish={() => alert("finished")}
+              digitStyle={{backgroundColor: lastMinute ?"red":"#1CC625"}}
+              digitTxtStyle={{color: '#fff'}}
+              size={20}
+              timeToShow={["M", "S"]}
+              timeLabels={{ m: "", s: "" }}
+              showSeparator
+              onChange={(e)=>{
+                if(e<60){
+                  setLastMinute(true)
+                }
+              }}
+            />
+            <FlatList
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              data={questions}
+              renderItem={({ item, index }) => {
+                const isLastIndex = questions.length - 1 === index;
+                return (
+                  <QuestionCard
+                    question={item}
+                    index={index}
+                    navigation={navigation}
+                    isLastIndex={isLastIndex}
+                  />
+                );
+              }}
+            />
+          </>
         ) : (
           <View style={styles.pleaseWaitContainer}>
-            <Image source={smilyCartoon} style={styles.smilyCartoonImage}/>
-            <Text style={styles.pleaseWaitText}>Please Wait while Quiz is starting...</Text>
+            <Image source={smilyCartoon} style={styles.smilyCartoonImage} />
+            <Text style={styles.pleaseWaitText}>
+              Please Wait while Quiz is starting...
+            </Text>
           </View>
         )}
       </View>
