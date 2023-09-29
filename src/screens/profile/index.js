@@ -89,7 +89,7 @@ const ProfileScreen = () => {
         </View>
       </View>
       <View style={styles.rankingContainer}>
-        <Text style={styles.rankHeading}>SOLVED QUESTIONS </Text>
+        <Text style={styles.rankHeading}>QUESTIONS SOLVED</Text>
         <View style={styles.rankingInnerContainer}>
           <Image source={penLogo} style={styles.rankCup} />
           <Text style={styles.rankText}>74</Text>
