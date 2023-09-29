@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         resizeMode:"contain"
     },
     detailsContainer:{
-        marginVertical:5
+        marginVertical:15,
     },
     detailsText:{
         fontSize:17,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:"space-between",
         marginTop:20,
-        padding:20,
+        padding:10,
         paddingHorizontal:35,
         marginHorizontal:20,
         elevation:10,
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
          alignItems:"center"
     },
     rankCup:{
-        width:50,
-        height:50,
+        width:40,
+        height:40,
         resizeMode:'contain'
     },
     rankHeading:{
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
        width:100,
     },
     rankText:{
-        fontSize:25,
+        fontSize:20,
         fontWeight:"800",
         marginLeft:10,
         textAlign:"center",
