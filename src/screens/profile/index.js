@@ -13,6 +13,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
+import ProgressBar from 'react-native-progress/Bar';
 
 import styles from "./style";
 import userLogo from "../../../assets/images/profile.png";
@@ -20,6 +21,7 @@ import emailLogo from "../../../assets/images/emailLogo.png";
 import phoneLogo from "../../../assets/images/phoneLogo.png";
 import rankCupLogo from "../../../assets/images/rankCupLogo.png";
 import coinLogo from "../../../assets/images/coinLogo.png";
+import penLogo from "../../../assets/images/penLogo.png";
 
 const ProfileScreen = () => {
   const userData = useSelector((state) => state.auth.userData);
@@ -67,6 +69,10 @@ const ProfileScreen = () => {
           />
         </TouchableOpacity>
       </View>
+       <View style={styles.progressBarContainer}>
+       <Text style={styles.progressHeading}>PROGRESS BAR</Text>
+      <ProgressBar progress={0.5} width={350} height={20} borderRadius={40}/>
+       </View>
 
       <View style={styles.rankingContainer}>
         <Text style={styles.rankHeading}>RANKING</Text>
@@ -80,6 +86,13 @@ const ProfileScreen = () => {
         <View style={styles.rankingInnerContainer}>
           <Image source={coinLogo} style={styles.rankCup} />
           <Text style={styles.rankText}>1231</Text>
+        </View>
+      </View>
+      <View style={styles.rankingContainer}>
+        <Text style={styles.rankHeading}>SOLVED QUESTIONS </Text>
+        <View style={styles.rankingInnerContainer}>
+          <Image source={penLogo} style={styles.rankCup} />
+          <Text style={styles.rankText}>74</Text>
         </View>
       </View>
     </SafeAreaView>

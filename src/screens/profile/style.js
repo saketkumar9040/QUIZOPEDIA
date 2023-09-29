@@ -55,6 +55,17 @@ const styles = StyleSheet.create({
         color:"#F33A6A",
         // textAlign:"center"
     },
+    progressBarContainer:{
+         alignItems:'center',
+         justifyContent:"center",
+         marginVertical:20,
+
+    },
+    progressHeading:{
+       fontSize:18,
+       fontWeight:"800",
+       margin:10,
+    },
     rankingContainer:{
         flexDirection:"row",
         alignItems:'center',
@@ -79,13 +90,14 @@ const styles = StyleSheet.create({
     rankHeading:{
        fontSize:17,
        textAlign:"center",
-       fontWeight:"800"
+       fontWeight:"800",
+       width:100,
     },
     rankText:{
         fontSize:25,
         fontWeight:"800",
         marginLeft:10,
-
+        textAlign:"center",
     }
 });
 
