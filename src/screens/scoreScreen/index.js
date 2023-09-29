@@ -16,8 +16,7 @@ import { clearScoreData } from "../../redux/scoreSlice";
 
 const ScoreScreen = ({ navigation, route }) => {
   const dispatch = useDispatch();
-  const score = route.params.finalScore
-  console.log(score);
+  const score = route.params.finalScore;
 
   const [scoreColor, setScoreColor] = useState("");
   const [greetText, setGreetText] = useState("");

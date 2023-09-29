@@ -27,7 +27,7 @@ const TabNavigator = () => {
       tabBarShowLabel:false
     }}
   >
-    <Tab.Screen
+    {/* <Tab.Screen
       name="dashboard"
       component={DashboardScreen}
       options={{
@@ -47,7 +47,7 @@ const TabNavigator = () => {
         //  <FontAwesome name="user" size={30} color="#0096FF" /> 
       
       }}
-    />
+    /> */}
     <Tab.Screen
       name="profile"
       component={ProfileScreen}

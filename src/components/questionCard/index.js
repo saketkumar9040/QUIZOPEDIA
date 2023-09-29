@@ -21,7 +21,6 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
     const [selectedOption,setSelectedOption] = useState("");
 
     const correctAnswer = question.correct_answer;
-    console.log(correctAnswer);
 
   const options = [
     question.correct_answer,

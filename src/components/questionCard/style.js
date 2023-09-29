@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
       },
       clearResponseContainer:{
         alignItems:"center",
-        // marginTop:30,
         marginBottom:5,
         borderRadius:30
       },
