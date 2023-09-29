@@ -19,6 +19,7 @@ import userLogo from "../../../assets/images/profile.png";
 import emailLogo from "../../../assets/images/emailLogo.png";
 import phoneLogo from "../../../assets/images/phoneLogo.png";
 import rankCupLogo from "../../../assets/images/rankCupLogo.png";
+import coinLogo from "../../../assets/images/coinLogo.png";
 
 const ProfileScreen = () => {
   const userData = useSelector((state) => state.auth.userData);
@@ -39,7 +40,9 @@ const ProfileScreen = () => {
 
             <View style={styles.detailsContainer}>
               <Image source={phoneLogo} style={styles.phoneLogo} />
-              <Text style={{...styles.detailsText,color:"green"}}>{userData.phone}</Text>
+              <Text style={{ ...styles.detailsText, color: "green" }}>
+                {userData.phone}
+              </Text>
             </View>
           </View>
         </View>
@@ -65,14 +68,18 @@ const ProfileScreen = () => {
       </View>
 
       <View style={styles.rankingContainer}>
-                <View style={styles.rankingInnerContainer}>
-                <Image source={rankCupLogo} style={styles.rankCup} />
-                <Text style={styles.rankText}>45</Text>
-                </View>
-                <View style={styles.rankingInnerContainer}>
-                <Image source={rankCupLogo} style={styles.rankCup} />
-                <Text style={styles.rankText}>45</Text>
-                </View>
+        <Text style={styles.rankHeading}>RANKING</Text>
+        <View style={styles.rankingInnerContainer}>
+          <Image source={rankCupLogo} style={styles.rankCup} />
+          <Text style={styles.rankText}>45</Text>
+        </View>
+      </View>
+      <View style={styles.rankingContainer}>
+        <Text style={styles.rankHeading}>COINS </Text>
+        <View style={styles.rankingInnerContainer}>
+          <Image source={coinLogo} style={styles.rankCup} />
+          <Text style={styles.rankText}>1231</Text>
+        </View>
       </View>
     </SafeAreaView>
   );

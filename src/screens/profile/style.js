@@ -56,23 +56,31 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         alignItems:'center',
         justifyContent:"space-between",
-        backgroundColor:'green',
         marginTop:20,
         padding:20,
         paddingHorizontal:35,
+        marginHorizontal:20,
+        elevation:10,
+        backgroundColor:"#fff",
+        borderRadius:50,
     },
     rankingInnerContainer:{
          flexDirection:"row",
          alignItems:"center"
     },
     rankCup:{
-        width:70,
-        height:70,
+        width:50,
+        height:50,
         resizeMode:'contain'
     },
+    rankHeading:{
+       fontSize:17,
+       textAlign:"center"
+    },
     rankText:{
-        fontSize:45,
+        fontSize:25,
         fontWeight:"800",
+        marginLeft:10,
 
     }
 });
