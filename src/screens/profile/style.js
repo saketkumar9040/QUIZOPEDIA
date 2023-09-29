@@ -6,14 +6,21 @@ const styles = StyleSheet.create({
         paddingTop:40,
         backgroundColor:"#fff"
     },
+    userInfoContainer:{
+        // marginTop:40,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between",
+        paddingHorizontal:10,
+    },
     profilePicContainer:{
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
     },
     profilePic:{
-        width:200,
-        height:200,
+        width:150,
+        height:150,
     },
     penIcon:{
         position:"absolute",
@@ -21,16 +28,12 @@ const styles = StyleSheet.create({
         backgroundColor:"#fff",
         borderRadius:50,
     },
-    userInfoContainer:{
-        marginTop:40,
-        flexDirection:"row",
-        alignItems:"center",
-        paddingHorizontal:10,
-    },
     userNameText:{
         fontSize:40,
         fontWeight:"700",
-        alignSelf:"center"
+        alignSelf:"center",
+        marginVertical:15,
+        color:"#800080",
     },
     emailLogo:{
         width:30,
@@ -75,7 +78,8 @@ const styles = StyleSheet.create({
     },
     rankHeading:{
        fontSize:17,
-       textAlign:"center"
+       textAlign:"center",
+       fontWeight:"800"
     },
     rankText:{
         fontSize:25,

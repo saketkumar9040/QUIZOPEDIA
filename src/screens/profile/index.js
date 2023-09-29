@@ -31,9 +31,10 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
+       <Text style={styles.userNameText}>Hi, {userData.name}</Text>
       <View style={styles.userInfoContainer}>
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Text style={styles.userNameText}>{userData.name}</Text>
+        <View style={{ alignItems: "center", justifyContent: "center",flex:1, }}>
+         
           <View style={styles.detailsContainer}>
             <Image source={emailLogo} style={styles.emailLogo} />
             <Text style={styles.detailsText}>{userData.email}</Text>
