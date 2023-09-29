@@ -104,8 +104,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems:'center',
     justifyContent:"space-between",
-    // position:"absolute",/
-    // bottom:0,
+    paddingHorizontal:10,
   },
   logoContainer: {
     alignItems: "center",

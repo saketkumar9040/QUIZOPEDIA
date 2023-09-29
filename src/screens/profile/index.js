@@ -18,7 +18,6 @@ import ProgressBar from "react-native-progress/Bar";
 
 import styles from "./style";
 import userLogo from "../../../assets/images/profile.png";
-import homeLogo from "../../../assets/images/homeIcon.png";
 import emailLogo from "../../../assets/images/emailLogo.png";
 import phoneLogo from "../../../assets/images/phoneLogo.png";
 import rankCupLogo from "../../../assets/images/rankCupLogo.png";
