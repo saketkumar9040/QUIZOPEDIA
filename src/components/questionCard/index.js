@@ -21,7 +21,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
     const [selectedOption,setSelectedOption] = useState("");
 
     const correctAnswer = question.correct_answer;
-    // console.log(correctAnswer);
+    console.log(correctAnswer);
 
   const options = [
     question.correct_answer,
@@ -29,10 +29,13 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
   ].sort();
 
   const calculateScoreHandler = async () => {
-      if(selectedOption == correctAnswer){
-        dispatch(setFinalScore({score:1}));
+    let finalScore = 0;
+      for(let key in finalAnswersList){
+       if(key === finalAnswersList[key]){
+        finalScore ++;
+       }    
       }
-      navigation.navigate("score");
+      navigation.navigate("score",{finalScore});
   }
 
   return (
