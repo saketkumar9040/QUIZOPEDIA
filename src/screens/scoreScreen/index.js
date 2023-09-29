@@ -1,54 +1,82 @@
-import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import tropyLogo from "../../../assets/images/trophyLogo.png"
-import homeIcon from "../../../assets/images/homeIcon.png"
-import retryButton from "../../../assets/images/retryButton.png"
-import styles from './style';
+import styles from "./style";
+import tropyLogo from "../../../assets/images/trophyLogo.png";
+import homeIcon from "../../../assets/images/homeIcon.png";
+import retryButton from "../../../assets/images/retryButton.png";
+import { clearScore } from "../../redux/scoreSlice";
 
-const ScoreScreen = ({navigation,route}) => {
-    console.log(route.params.score);
-    const score = route.params.score;
-    const [ scoreColor,setScoreColor] = useState("");
-    const [ greetText,setGreetText] = useState("");
+const ScoreScreen = ({ navigation, route }) => {
+  const dispatch = useDispatch();
+  const score = useSelector((state) => state.score.finalScore);
+  console.log(score)
 
-    useEffect(()=>{
-        if(score !== undefined){
-           if(score <5){
-            setScoreColor("#FF3131");
-            setGreetText("SEEMS IT WAS A BAD DAY, DON'T WORRY TRY HARDER AGAIN 🙂");
-           }else if (score > 4 && score < 8){
-            setScoreColor("#FFBF00");
-            setGreetText("WELL DONE,LOOKS LIKE HARD WORK IS PAYING YOU OFF🤗");
-           }else{
-            setScoreColor("#7CFC00");
-            setGreetText("EXCELLENT, KEEP UP THE GOOD WORK🙂");
-           }
-        }
-    },[]);
+  const [scoreColor, setScoreColor] = useState("");
+  const [greetText, setGreetText] = useState("");
+
+  useEffect(() => {
+    if (score !== undefined || score !== null) {
+      if (score < 5) {
+        setScoreColor("#FF3131");
+        setGreetText(
+          "SEEMS LIKE IT WAS A BAD DAY, DON'T WORRY TRY HARDER NEXT TIME 🙂"
+        );
+      } else if (score > 4 && score < 8) {
+        setScoreColor("#FFBF00");
+        setGreetText("WELL DONE,LOOKS LIKE HARD WORK IS PAYING YOU OFF🤗");
+      } else {
+        setScoreColor("#7CFC00");
+        setGreetText("EXCELLENT, KEEP UP THE GOOD WORK🙂");
+      }
+    }
+  }, []);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-        <View style={styles.congratsContainer}>
-           <Text style={styles.congratsText}>{greetText}</Text>
-        </View>
+      <View style={styles.congratsContainer}>
+        <Text style={styles.congratsText}>{greetText}</Text>
+      </View>
       <View style={styles.imageContainer}>
-         <Image source={tropyLogo} style={styles.trophyImage}/>
+        <Image source={tropyLogo} style={styles.trophyImage} />
       </View>
       <View style={styles.scoreContainer}>
-           <Text style={styles.scoreText}>YOUR SCORE IS</Text>
-           <Text style={{...styles.congratsText,fontSize:55,color:scoreColor}}>{score} / 10</Text>
-        </View>
-        <View style={styles.bottomContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("home")}>
+        <Text style={styles.scoreText}>YOUR SCORE IS</Text>
+        {scoreColor && (
+          <Text
+            style={{ ...styles.congratsText, fontSize: 55, color: scoreColor }}
+          >
+            {score} / 10
+          </Text>
+        )}
+      </View>
+      <View style={styles.bottomContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(clearScore());
+            navigation.navigate("home");
+          }}
+        >
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("home")}>
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(clearScore());
+            navigation.navigate("home");
+          }}
+        >
           <Image source={retryButton} style={styles.retryBotton} />
         </TouchableOpacity>
-        </View>
+      </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default ScoreScreen;

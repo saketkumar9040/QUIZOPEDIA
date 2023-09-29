@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image, ScrollView } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import {
     Feather,
@@ -17,10 +17,11 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
 
     const dispatch = useDispatch();
     const score = useSelector(state=>state.score.finalScore);
+    // console.log(score)
     const [selectedOption,setSelectedOption] = useState("");
 
     const correctAnswer = question.correct_answer;
-    // console.log(correctAnswer);
+    console.log(correctAnswer);
 
   const options = [
     question.correct_answer,
@@ -29,10 +30,9 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
 
   const calculateScoreHandler = async () => {
       if(selectedOption == correctAnswer){
-        dispatch(calculateScore({score:1}))
+       await dispatch(calculateScore({score:1}));
       }
-      navigation.navigate("score",{score:score});
-    //   dispatch(clearScore());
+      navigation.navigate("score");
   }
 
   return (
@@ -65,6 +65,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
             </CountdownCircleTimer>
         </View>
       <View style={styles.questionContainer}>
+        <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.questionHeaderContainer}>
           <TouchableOpacity>
             <MaterialIcons name="bookmarks" size={38} color="#fff" />
@@ -95,6 +96,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
         }}>
           <Ionicons name="refresh-circle" size={50} color="#fff" />
         </TouchableOpacity>
+        </ScrollView>
       </View>
       <View style={styles.prevNextContainer}>
 
