@@ -17,7 +17,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
 
     const dispatch = useDispatch();
     const score = useSelector(state=>state.score.finalScore);
-    // console.log(score)
+    console.log(score)
     const [selectedOption,setSelectedOption] = useState("");
 
     const correctAnswer = question.correct_answer;
@@ -30,7 +30,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
 
   const calculateScoreHandler = async () => {
       if(selectedOption == correctAnswer){
-       await dispatch(calculateScore({score:1}));
+        dispatch(calculateScore({score:1}));
       }
       navigation.navigate("score");
   }
@@ -114,7 +114,9 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
             <Text style={styles.prevText}>PREV</Text>
           </TouchableOpacity>
         )}
-        <TouchableOpacity onPress={() => navigation.navigate("home")}>
+        <TouchableOpacity onPress={() =>{
+          dispatch(clearScore())
+          navigation.navigate("home")}}>
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
         

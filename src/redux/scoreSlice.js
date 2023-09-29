@@ -7,6 +7,7 @@ const scoreSlice = createSlice({
    },
    reducers :{
      calculateScore : (state,action) => {
+      console.log(action.payload)
          state.finalScore = state.finalScore + action.payload.score;
      },
      clearScore : (state,action) => {
