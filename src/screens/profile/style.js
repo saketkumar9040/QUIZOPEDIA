@@ -20,6 +20,60 @@ const styles = StyleSheet.create({
         bottom:0,
         backgroundColor:"#fff",
         borderRadius:50,
+    },
+    userInfoContainer:{
+        marginTop:40,
+        flexDirection:"row",
+        alignItems:"center",
+        paddingHorizontal:10,
+    },
+    userNameText:{
+        fontSize:40,
+        fontWeight:"700",
+        alignSelf:"center"
+    },
+    emailLogo:{
+        width:30,
+        height:30,
+        resizeMode:"contain"
+    },
+    phoneLogo:{
+        width:35,
+        height:35,
+        resizeMode:"contain"
+    },
+    detailsContainer:{
+        marginVertical:5
+    },
+    detailsText:{
+        fontSize:17,
+        fontWeight:"700",
+        letterSpacing:1,
+        color:"#F33A6A",
+        // textAlign:"center"
+    },
+    rankingContainer:{
+        flexDirection:"row",
+        alignItems:'center',
+        justifyContent:"space-between",
+        backgroundColor:'green',
+        marginTop:20,
+        padding:20,
+        paddingHorizontal:35,
+    },
+    rankingInnerContainer:{
+         flexDirection:"row",
+         alignItems:"center"
+    },
+    rankCup:{
+        width:70,
+        height:70,
+        resizeMode:'contain'
+    },
+    rankText:{
+        fontSize:45,
+        fontWeight:"800",
+
     }
 });
 
