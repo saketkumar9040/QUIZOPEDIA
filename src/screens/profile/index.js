@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import {
@@ -13,15 +14,18 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import ProgressBar from 'react-native-progress/Bar';
+import ProgressBar from "react-native-progress/Bar";
 
 import styles from "./style";
 import userLogo from "../../../assets/images/profile.png";
+import homeLogo from "../../../assets/images/homeIcon.png";
 import emailLogo from "../../../assets/images/emailLogo.png";
 import phoneLogo from "../../../assets/images/phoneLogo.png";
 import rankCupLogo from "../../../assets/images/rankCupLogo.png";
 import coinLogo from "../../../assets/images/coinLogo.png";
 import penLogo from "../../../assets/images/penLogo.png";
+import bookmarkLogo from "../../../assets/images/bookmarkLogo.png";
+import testLogo from "../../../assets/images/testLogo.png";
 
 const ProfileScreen = () => {
   const userData = useSelector((state) => state.auth.userData);
@@ -33,10 +37,11 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-       <Text style={styles.userNameText}>Hi, {userData.name}</Text>
+      <Text style={styles.userNameText}>Hi, {userData.name}</Text>
       <View style={styles.userInfoContainer}>
-        <View style={{ alignItems: "center", justifyContent: "center",flex:1, }}>
-         
+        <View
+          style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+        >
           <View style={styles.detailsContainer}>
             <Image source={emailLogo} style={styles.emailLogo} />
             <Text style={styles.detailsText}>{userData.email}</Text>
@@ -69,10 +74,10 @@ const ProfileScreen = () => {
           />
         </TouchableOpacity>
       </View>
-       <View style={styles.progressBarContainer}>
-       <Text style={styles.progressHeading}>PROGRESS BAR</Text>
-      <ProgressBar progress={0.5} width={350} height={20} borderRadius={40}/>
-       </View>
+      <View style={styles.progressBarContainer}>
+        <Text style={styles.progressHeading}>PROGRESS BAR</Text>
+        <ProgressBar progress={0.5} width={350} height={20} borderWidth={5} />
+      </View>
 
       <View style={styles.rankingContainer}>
         <Text style={styles.rankHeading}>RANKING</Text>
@@ -94,6 +99,34 @@ const ProfileScreen = () => {
           <Image source={penLogo} style={styles.rankCup} />
           <Text style={styles.rankText}>74</Text>
         </View>
+      </View>
+      <View style={styles.bottomContainer}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={homeLogo} style={styles.bottomLogo}/>
+               <Text style={styles.logoText}>HOME</Text>
+           </TouchableOpacity>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
+               <Text style={styles.logoText}>BOOKMARKS</Text>
+           </TouchableOpacity>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={testLogo} style={styles.bottomLogo}/>
+               <Text style={styles.logoText}>TEST ATTEMPTED</Text>
+           </TouchableOpacity>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
+           </TouchableOpacity>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
+           </TouchableOpacity>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
+           </TouchableOpacity>
+           <TouchableOpacity style={styles.logoContainer}>
+               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
+           </TouchableOpacity>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

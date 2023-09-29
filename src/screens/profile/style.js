@@ -1,104 +1,127 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    mainContainer:{
-        flex:1,
-        paddingTop:40,
-        backgroundColor:"#fff"
-    },
-    userInfoContainer:{
-        // marginTop:40,
-        flexDirection:"row",
-        alignItems:"center",
-        justifyContent:"space-between",
-        paddingHorizontal:10,
-    },
-    profilePicContainer:{
-        flexDirection:"row",
-        alignItems:"center",
-        justifyContent:"center",
-    },
-    profilePic:{
-        width:150,
-        height:150,
-    },
-    penIcon:{
-        position:"absolute",
-        bottom:0,
-        backgroundColor:"#fff",
-        borderRadius:50,
-    },
-    userNameText:{
-        fontSize:40,
-        fontWeight:"700",
-        alignSelf:"center",
-        marginVertical:15,
-        color:"#800080",
-    },
-    emailLogo:{
-        width:30,
-        height:30,
-        resizeMode:"contain"
-    },
-    phoneLogo:{
-        width:35,
-        height:35,
-        resizeMode:"contain"
-    },
-    detailsContainer:{
-        marginVertical:15,
-    },
-    detailsText:{
-        fontSize:17,
-        fontWeight:"700",
-        letterSpacing:1,
-        color:"#F33A6A",
-        // textAlign:"center"
-    },
-    progressBarContainer:{
-         alignItems:'center',
-         justifyContent:"center",
-         marginVertical:20,
+  mainContainer: {
+    flex: 1,
+    paddingTop: 40,
+    backgroundColor: "#fff",
+  },
+  userInfoContainer: {
+    // marginTop:40,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+  },
+  profilePicContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  profilePic: {
+    width: 150,
+    height: 150,
+  },
+  penIcon: {
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: "#fff",
+    borderRadius: 50,
+  },
+  userNameText: {
+    fontSize: 40,
+    fontWeight: "700",
+    alignSelf: "center",
+    marginVertical: 15,
+    color: "#800080",
+  },
+  emailLogo: {
+    width: 30,
+    height: 30,
+    resizeMode: "contain",
+  },
+  phoneLogo: {
+    width: 35,
+    height: 35,
+    resizeMode: "contain",
+  },
+  detailsContainer: {
+    marginVertical: 15,
+  },
+  detailsText: {
+    fontSize: 17,
+    fontWeight: "700",
+    letterSpacing: 1,
+    color: "#F33A6A",
+    // textAlign:"center"
+  },
+  progressBarContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 20,
+  },
+  progressHeading: {
+    fontSize: 18,
+    fontWeight: "800",
+    margin: 10,
+  },
+  rankingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
+    padding: 10,
+    paddingHorizontal: 35,
+    marginHorizontal: 20,
+    elevation: 10,
+    backgroundColor: "#fff",
+    borderRadius: 50,
+  },
+  rankingInnerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  rankCup: {
+    width: 40,
+    height: 40,
+    resizeMode: "contain",
+  },
+  rankHeading: {
+    fontSize: 14,
+    textAlign: "center",
+    fontWeight: "800",
+    width: 100,
+  },
+  rankText: {
+    fontSize: 18,
+    fontWeight: "800",
+    marginLeft: 10,
+    textAlign: "center",
+  },
+  bottomContainer: {
+    flex: 1,
+    // alignItems: "center",
+    // justifyContent: "space-between",
+    // backgroundColor: "#fff",
+    marginTop: 20,
+  },
+  logoContainer: {
+    alignItems: "center",
+     justifyContent:"center",
+    marginHorizontal: 7,
+  },
 
-    },
-    progressHeading:{
-       fontSize:18,
-       fontWeight:"800",
-       margin:10,
-    },
-    rankingContainer:{
-        flexDirection:"row",
-        alignItems:'center',
-        justifyContent:"space-between",
-        marginTop:20,
-        padding:10,
-        paddingHorizontal:35,
-        marginHorizontal:20,
-        elevation:10,
-        backgroundColor:"#fff",
-        borderRadius:50,
-    },
-    rankingInnerContainer:{
-         flexDirection:"row",
-         alignItems:"center"
-    },
-    rankCup:{
-        width:40,
-        height:40,
-        resizeMode:'contain'
-    },
-    rankHeading:{
-       fontSize:14,
-       textAlign:"center",
-       fontWeight:"800",
-       width:100,
-    },
-    rankText:{
-        fontSize:18,
-        fontWeight:"800",
-        marginLeft:10,
-        textAlign:"center",
-    }
+  bottomLogo: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
+  logoText: {
+    fontSize: 11,
+    fontWeight: "900",
+    width: 90,
+    textAlign: "center",
+  },
 });
 
 export default styles;
