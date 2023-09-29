@@ -1,5 +1,5 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
     Feather,
     FontAwesome,
@@ -13,16 +13,14 @@ import homeIcon from "../../../assets/images/homeIcon.png";
 import { useDispatch, useSelector } from "react-redux";
 import { calculateScore, clearScore } from "../../redux/scoreSlice";
 
-
-const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
+const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef }) => {
 
     const dispatch = useDispatch();
     const score = useSelector(state=>state.score.finalScore);
-    // console.log(score)
     const [selectedOption,setSelectedOption] = useState("");
 
     const correctAnswer = question.correct_answer;
-    console.log(correctAnswer);
+    // console.log(correctAnswer);
 
   const options = [
     question.correct_answer,
@@ -42,7 +40,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
         <View style={{alignItems:"center"}}>
           <CountdownCircleTimer
               isPlaying
-              duration={ 60}
+              duration={5* 60}
               colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
               colorsTime={[300, 220, 80, 0]}
               size={80}
@@ -99,8 +97,17 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
         </TouchableOpacity>
       </View>
       <View style={styles.prevNextContainer}>
+
         {index > 0 && (
-          <TouchableOpacity style={styles.prevContainer}>
+          <TouchableOpacity 
+             style={styles.prevContainer}
+             onPress={()=>{
+               flatlistRef.current.scrollToIndex({
+                animated:true,
+                index:index-1,
+               })
+             }}
+          >
             <Feather name="arrow-left" size={24} color="#fff" />
             <Text style={styles.prevText}>PREV</Text>
           </TouchableOpacity>
@@ -108,8 +115,17 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
         <TouchableOpacity onPress={() => navigation.navigate("home")}>
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
+        
         {!isLastIndex ? (
-          <TouchableOpacity style={styles.nextContainer}>
+          <TouchableOpacity 
+             style={styles.nextContainer}
+             onPress={()=>{
+              flatlistRef.current.scrollToIndex({
+               animated:true,
+               index:index+1,
+              })
+            }}
+          >
             <Text style={styles.nextText}>NEXT</Text>
             <Feather name="arrow-right" size={24} color="#fff" />
           </TouchableOpacity>
@@ -122,6 +138,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex }) => {
             <Feather name="arrow-right" size={24} color="#fff" />
           </TouchableOpacity>
         )}
+
       </View>
     </View>
   );

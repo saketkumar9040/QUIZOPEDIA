@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
@@ -16,6 +16,8 @@ const QuestionScreen = ({ navigation, route }) => {
   const [questions, setQuestions] = useState([]);
   const [lastMinute, setLastMinute] = useState(false);
   const [score, setScore] = useState(7);
+
+  const flatlistRef = useRef();
 
   const fetchData = async () => {
     const data = await axios.get(
@@ -35,18 +37,20 @@ const QuestionScreen = ({ navigation, route }) => {
         {questions.length > 0 ? (
           <>
             <FlatList
+              ref={flatlistRef}
               horizontal
               pagingEnabled
               showsHorizontalScrollIndicator={false}
               data={questions}
               renderItem={({ item, index }) => {
                 const isLastIndex = questions.length - 1 === index;
-                return (
+                return (   
                   <QuestionCard
                     question={item}
                     index={index}
                     navigation={navigation}
                     isLastIndex={isLastIndex}
+                    flatlistRef={flatlistRef}
                   />
                 );
               }}
