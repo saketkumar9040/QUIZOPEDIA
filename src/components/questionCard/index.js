@@ -11,17 +11,17 @@ import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import styles from "./style";
 import homeIcon from "../../../assets/images/homeIcon.png";
 import { useDispatch, useSelector } from "react-redux";
-import { calculateScore, clearScore } from "../../redux/scoreSlice";
+import {  setFinalAnswers, setFinalScore ,clearScoreData } from "../../redux/scoreSlice";
 
 const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef }) => {
 
     const dispatch = useDispatch();
-    const score = useSelector(state=>state.score.finalScore);
-    console.log(score)
+    const finalAnswersList = useSelector(state=>state.score.finalAnswers);
+
     const [selectedOption,setSelectedOption] = useState("");
 
     const correctAnswer = question.correct_answer;
-    console.log(correctAnswer);
+    // console.log(correctAnswer);
 
   const options = [
     question.correct_answer,
@@ -30,7 +30,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
 
   const calculateScoreHandler = async () => {
       if(selectedOption == correctAnswer){
-        dispatch(calculateScore({score:1}));
+        dispatch(setFinalScore({score:1}));
       }
       navigation.navigate("score");
   }
@@ -40,7 +40,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
         <View style={{alignItems:"center"}}>
           <CountdownCircleTimer
               isPlaying
-              duration={5* 60}
+              duration={5*60}
               colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
               colorsTime={[300, 220, 80, 0]}
               size={80}
@@ -65,7 +65,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
             </CountdownCircleTimer>
         </View>
       <View style={styles.questionContainer}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+       
         <View style={styles.questionHeaderContainer}>
           <TouchableOpacity>
             <MaterialIcons name="bookmarks" size={38} color="#fff" />
@@ -77,6 +77,7 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
         </View>
         <Text style={styles.questionText}>{question.question}</Text>
         <View style={styles.optionsContainer}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {options.map((ele, ind) => {
             return (
               <TouchableOpacity
@@ -84,19 +85,23 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
                 style={ele === selectedOption ?{...styles.option,backgroundColor:"green"}:styles.option}
                 onPress={() => {
                     setSelectedOption(ele);
+                    const answer = {};
+                    answer[`${correctAnswer}`] = ele;
+                    dispatch(setFinalAnswers(answer))
                 }}
               >
                 <Text style={ele === selectedOption?{...styles.optionText,color:"#fff"}:styles.optionText}>{ele}</Text>
               </TouchableOpacity>
             );
           })}
-        </View>
+           </ScrollView>
         <TouchableOpacity style={styles.clearResponseContainer} onPress={()=>{
             setSelectedOption("");
         }}>
           <Ionicons name="refresh-circle" size={50} color="#fff" />
         </TouchableOpacity>
-        </ScrollView>
+        </View>
+       
       </View>
       <View style={styles.prevNextContainer}>
 

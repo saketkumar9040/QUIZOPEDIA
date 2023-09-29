@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         elevation:10,
+        marginTop:30,
       },
       option:{
         backgroundColor:"#fff",
@@ -110,9 +111,8 @@ const styles = StyleSheet.create({
         marginVertical: 10,
       },
       clearResponseContainer:{
-        // flexDirection:"row",
         alignItems:"center",
-        // justifyContent:"center",
+        // marginTop:30,
         marginBottom:5,
         borderRadius:30
       },

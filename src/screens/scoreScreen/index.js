@@ -12,12 +12,12 @@ import styles from "./style";
 import tropyLogo from "../../../assets/images/trophyLogo.png";
 import homeIcon from "../../../assets/images/homeIcon.png";
 import retryButton from "../../../assets/images/retryButton.png";
-import { clearScore } from "../../redux/scoreSlice";
+import { clearScoreData } from "../../redux/scoreSlice";
 
 const ScoreScreen = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const score = useSelector((state) => state.score.finalScore);
-  console.log(score)
+  console.log(score);
 
   const [scoreColor, setScoreColor] = useState("");
   const [greetText, setGreetText] = useState("");
@@ -37,7 +37,7 @@ const ScoreScreen = ({ navigation, route }) => {
         setGreetText("EXCELLENT, KEEP UP THE GOOD WORK🙂");
       }
     }
-  }, []);
+  }, [score]);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -60,7 +60,7 @@ const ScoreScreen = ({ navigation, route }) => {
       <View style={styles.bottomContainer}>
         <TouchableOpacity
           onPress={() => {
-            dispatch(clearScore());
+            dispatch(clearScoreData());
             navigation.navigate("home");
           }}
         >
@@ -68,7 +68,7 @@ const ScoreScreen = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            dispatch(clearScore());
+            dispatch(clearScoreData());
             navigation.navigate("home");
           }}
         >
