@@ -36,20 +36,20 @@ const styles = StyleSheet.create({
     color: "#800080",
   },
   emailLogo: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     resizeMode: "contain",
   },
   phoneLogo: {
-    width: 35,
-    height: 35,
+    width: 25,
+    height: 25,
     resizeMode: "contain",
   },
   detailsContainer: {
     marginVertical: 15,
   },
   detailsText: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: "700",
     letterSpacing: 1,
     color: "#F33A6A",
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   progressBarContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 20,
+    marginVertical: 10,
   },
   progressHeading: {
     fontSize: 18,
@@ -66,11 +66,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   rankingContainer: {
+    // flex:1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: 20,
-    padding: 10,
+    padding:10,
     paddingHorizontal: 35,
     marginHorizontal: 20,
     elevation: 10,
@@ -99,21 +100,22 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   bottomContainer: {
-    flex: 1,
-    // alignItems: "center",
-    // justifyContent: "space-between",
-    // backgroundColor: "#fff",
+    flexDirection:"row",
     marginTop: 20,
+    alignItems:'center',
+    justifyContent:"space-between",
+    // position:"absolute",/
+    // bottom:0,
   },
   logoContainer: {
     alignItems: "center",
      justifyContent:"center",
-    marginHorizontal: 7,
+    // marginHorizontal: 2,
   },
 
   bottomLogo: {
-    width: 50,
-    height: 50,
+    width: 80,
+    height: 80,
     resizeMode: "contain",
   },
   logoText: {

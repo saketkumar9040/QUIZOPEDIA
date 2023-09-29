@@ -26,8 +26,9 @@ import coinLogo from "../../../assets/images/coinLogo.png";
 import penLogo from "../../../assets/images/penLogo.png";
 import bookmarkLogo from "../../../assets/images/bookmarkLogo.png";
 import testLogo from "../../../assets/images/testLogo.png";
+import settingsLogo from "../../../assets/images/settingsIcon.png";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   const userData = useSelector((state) => state.auth.userData);
   console.log(userData);
 
@@ -101,11 +102,6 @@ const ProfileScreen = () => {
         </View>
       </View>
       <View style={styles.bottomContainer}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={homeLogo} style={styles.bottomLogo}/>
-               <Text style={styles.logoText}>HOME</Text>
-           </TouchableOpacity>
            <TouchableOpacity style={styles.logoContainer}>
                <Image source={bookmarkLogo} style={styles.bottomLogo}/>
                <Text style={styles.logoText}>BOOKMARKS</Text>
@@ -115,18 +111,9 @@ const ProfileScreen = () => {
                <Text style={styles.logoText}>TEST ATTEMPTED</Text>
            </TouchableOpacity>
            <TouchableOpacity style={styles.logoContainer}>
-               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
+               <Image source={settingsLogo} style={styles.bottomLogo}/>
+               <Text style={styles.logoText}>SETTINGS</Text>
            </TouchableOpacity>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
-           </TouchableOpacity>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
-           </TouchableOpacity>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
-           </TouchableOpacity>
-        </ScrollView>
       </View>
     </SafeAreaView>
   );
