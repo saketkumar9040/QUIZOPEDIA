@@ -27,7 +27,7 @@ import bookmarkLogo from "../../../assets/images/bookmarkLogo.png";
 import testLogo from "../../../assets/images/testLogo.png";
 import settingsLogo from "../../../assets/images/settingsIcon.png";
 
-const ProfileScreen = ({navigation}) => {
+const ProfileScreen = ({ navigation }) => {
   const userData = useSelector((state) => state.auth.userData);
   console.log(userData);
 
@@ -101,18 +101,21 @@ const ProfileScreen = ({navigation}) => {
         </View>
       </View>
       <View style={styles.bottomContainer}>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={bookmarkLogo} style={styles.bottomLogo}/>
-               <Text style={styles.logoText}>BOOKMARKS</Text>
-           </TouchableOpacity>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={testLogo} style={styles.bottomLogo}/>
-               <Text style={styles.logoText}>TEST ATTEMPTED</Text>
-           </TouchableOpacity>
-           <TouchableOpacity style={styles.logoContainer}>
-               <Image source={settingsLogo} style={styles.bottomLogo}/>
-               <Text style={styles.logoText}>SETTINGS</Text>
-           </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.logoContainer}
+          onPress={() => navigation.navigate("bookmark")}
+        >
+          <Image source={bookmarkLogo} style={styles.bottomLogo} />
+          <Text style={styles.logoText}>BOOKMARKS</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.logoContainer}>
+          <Image source={testLogo} style={styles.bottomLogo} />
+          <Text style={styles.logoText}>TEST ATTEMPTED</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.logoContainer}>
+          <Image source={settingsLogo} style={styles.bottomLogo} />
+          <Text style={styles.logoText}>SETTINGS</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

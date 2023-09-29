@@ -11,6 +11,7 @@ import leaderBoardIcon from "../../assets/images/leaderboardIcon.png";
 import profileIcon from "../../assets/images/profile.png";
 import homeIcon from "../../assets/images/homeIcon.png"
 import ScoreScreen from '../screens/scoreScreen';
+import BookmarkScreen from '../screens/bookmarks';
 
 
 const Tab = createBottomTabNavigator();
@@ -69,6 +70,7 @@ const MainNavigator = () => {
     <Stack.Screen name="home" component={TabNavigator} options={{headerShown:false}}/>
     <Stack.Screen name="question" component={QuestionScreen} options={{headerShown:false}}/>
     <Stack.Screen name="score" component={ScoreScreen} options={{headerShown:false}}/>
+    <Stack.Screen name="bookmark" component={BookmarkScreen} options={{headerShown:false}}/>
   </Stack.Navigator>
   );
 };

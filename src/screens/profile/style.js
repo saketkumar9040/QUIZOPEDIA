@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
      justifyContent:"center",
     // marginHorizontal: 2,
   },
-
   bottomLogo: {
     width: 80,
     height: 80,
