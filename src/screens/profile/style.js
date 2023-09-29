@@ -88,13 +88,13 @@ const styles = StyleSheet.create({
         resizeMode:'contain'
     },
     rankHeading:{
-       fontSize:17,
+       fontSize:14,
        textAlign:"center",
        fontWeight:"800",
        width:100,
     },
     rankText:{
-        fontSize:20,
+        fontSize:18,
         fontWeight:"800",
         marginLeft:10,
         textAlign:"center",
