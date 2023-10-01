@@ -30,6 +30,8 @@ const QuestionCard = ({
 
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [key,setKey] = useState(0);
+  const [ isPlaying,setIsPlaying] = useState(true);
 
   const correctAnswer = question.correct_answer;
 
@@ -53,7 +55,8 @@ const QuestionCard = ({
       <View style={{ alignItems: "center" }}>
         {!isSubmitted && (
           <CountdownCircleTimer
-            isPlaying
+            key={key}
+            isPlaying={isPlaying}
             duration={30}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[30, 22, 8, 0]}
@@ -61,6 +64,12 @@ const QuestionCard = ({
             isSmoothColorTransition
             onComplete={() => {
                 setIsSubmitted(true);
+                setKey(key =>key +1);
+                setIsPlaying(false);
+                return {
+                  newInitialRemainingTime:30,
+                  shouldRepeat:true
+                }
             }}
           >
             {({ remainingTime }) => {
@@ -126,7 +135,8 @@ const QuestionCard = ({
                         const answer = {};
                         answer[`${correctAnswer}`] = ele;
                         dispatch(setFinalAnswers(answer));
-                        setIsSubmitted(true)
+                        setIsSubmitted(true);
+                        setIsPlaying(false)
                       }}
                     >
                       <Text
@@ -172,6 +182,7 @@ const QuestionCard = ({
                 index: index + 1,
               }):
               calculateScoreHandler();
+              
             }}
           >
             <Text style={styles.nextText}>{isLastIndex ?"GET SCORE":"NEXT"}</Text>
