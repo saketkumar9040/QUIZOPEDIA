@@ -70,4 +70,6 @@ const styles = StyleSheet.create({
       letterSpacing: 2,
     },
   });
+
+  export default styles;
   

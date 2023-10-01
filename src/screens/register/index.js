@@ -17,6 +17,8 @@ import {
   // import AsyncStorage from "@react-native-async-storage/async-storage";
   import { authenticate } from "../../redux/authSlice";
   import { useDispatch } from "react-redux";
+  import styles from "./style";
+
   
   const RegisterScreen = ({ navigation }) => {
     const dispatch = useDispatch();

@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   bottomContainer: {
+    flex:1,
     flexDirection:"row",
     marginTop: 20,
     alignItems:'center',
