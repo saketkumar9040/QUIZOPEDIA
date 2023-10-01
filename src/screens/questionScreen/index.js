@@ -10,7 +10,7 @@ import QuestionCard from "../../components/questionCard";
 const QuestionScreen = ({ navigation, route }) => {
   const data = route.params;
 
-  const [category, setCategory] = useState(data.code);
+  const [category, setCategory] = useState(data?.code);
   const [difficulty, setDifficulty] = useState("");
   const [amount, setAmount] = useState(10);
   const [questions, setQuestions] = useState([]);
