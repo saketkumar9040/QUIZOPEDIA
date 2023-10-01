@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  FlatList,
   TouchableOpacity,
   Image,
   ScrollView,
@@ -35,7 +34,6 @@ const QuestionCard = ({
   const finalAnswersList = useSelector((state) => state.score.finalAnswers);
 
   const [selectedOption, setSelectedOption] = useState("");
-  const [ timer,setTimer] = useState(5*60)
 
   const correctAnswer = question.correct_answer;
 
@@ -51,7 +49,6 @@ const QuestionCard = ({
         finalScore++;
       }
     };
-    setTimer(5*60);
     navigation.navigate("score", { finalScore });
   };
 
@@ -60,7 +57,7 @@ const QuestionCard = ({
       <View style={{ alignItems: "center" }}>
         <CountdownCircleTimer
           isPlaying
-          duration={timer}
+          duration={5*60}
           colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
           colorsTime={[300, 220, 80, 0]}
           size={80}

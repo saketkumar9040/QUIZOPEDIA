@@ -6,9 +6,16 @@ import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import styles from "./style";
 import smilyCartoon from "../../../assets/images/smilyCartoon.png";
 import QuestionCard from "../../components/questionCard";
+import { useDispatch, useSelector} from "react-redux";
+import { setQuestionData } from "../../redux/questionSlice";
 
 const QuestionScreen = ({ navigation, route }) => {
   const data = route.params;
+
+  const questionData = useSelector(state=>state.question.questionData);
+  // console.log(questionData);
+
+  const dispatch = useDispatch();
 
   const [category, setCategory] = useState(data?.code);
   const [difficulty, setDifficulty] = useState("");
@@ -21,12 +28,14 @@ const QuestionScreen = ({ navigation, route }) => {
     const data = await axios.get(
       `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
     );
-    // console.log(data.data.results);
+    dispatch(setQuestionData(data.data.results));
     setQuestions(data.data.results);
   };
 
   useEffect(() => {
-    fetchData();
+    if (data !== undefined) {
+      fetchData();
+    }
   }, [data]);
 
   return (
@@ -42,7 +51,7 @@ const QuestionScreen = ({ navigation, route }) => {
               data={questions}
               renderItem={({ item, index }) => {
                 const isLastIndex = questions.length - 1 === index;
-                return (   
+                return (
                   <QuestionCard
                     question={item}
                     index={index}
