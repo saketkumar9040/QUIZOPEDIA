@@ -75,7 +75,7 @@ const QuestionCard = ({
                 style={{
                   fontSize: 20,
                   fontWeight: "900",
-                  color: "#00f7ff",
+                  color: "#BF40BF",
                 }}
               >
                 {`${minutes}:${seconds}`}
