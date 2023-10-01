@@ -47,6 +47,7 @@ const QuestionScreen = ({ navigation, route }) => {
               ref={flatlistRef}
               horizontal
               pagingEnabled
+              scrollEnabled={false}
               showsHorizontalScrollIndicator={false}
               data={questions}
               renderItem={({ item, index }) => {

@@ -34,6 +34,8 @@ const QuestionCard = ({
   const finalAnswersList = useSelector((state) => state.score.finalAnswers);
 
   const [selectedOption, setSelectedOption] = useState("");
+  const [isSubmitted,setIsSubmitted]= useState(false);
+  const [ key,setKey] = useState(0)
 
   const correctAnswer = question.correct_answer;
 
@@ -56,12 +58,20 @@ const QuestionCard = ({
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
         <CountdownCircleTimer
+          key={key}
           isPlaying
-          duration={5*60}
+          duration={30}
           colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
-          colorsTime={[300, 220, 80, 0]}
+          colorsTime={[30, 22, 8, 0]}
           size={80}
-          onComplete={() => calculateScoreHandler()}
+          onComplete={() => {
+            if(isLastIndex){
+              calculateScoreHandler()
+            }else{
+              setIsSubmitted(true)
+            }
+             
+            }}
           isSmoothColorTransition
         >
           {({ remainingTime }) => {
@@ -134,29 +144,8 @@ const QuestionCard = ({
         </View>
       </View>
       <View style={styles.prevNextContainer}>
-        {index > 0 && (
-          <TouchableOpacity
-            style={styles.prevContainer}
-            onPress={() => {
-              flatlistRef.current.scrollToIndex({
-                animated: true,
-                index: index - 1,
-              });
-            }}
-          >
-            <Feather name="arrow-left" size={24} color="#fff" />
-            <Text style={styles.prevText}>PREV</Text>
-          </TouchableOpacity>
-        )}
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("home");
-          }}
-        >
-          <Image source={homeIcon} style={styles.homeIcon} />
-        </TouchableOpacity>
 
-        {!isLastIndex ? (
+        {!isLastIndex && (
           <TouchableOpacity
             style={styles.nextContainer}
             onPress={() => {
@@ -164,19 +153,10 @@ const QuestionCard = ({
                 animated: true,
                 index: index + 1,
               });
+              setKey(1);
             }}
           >
             <Text style={styles.nextText}>NEXT</Text>
-            <Feather name="arrow-right" size={24} color="#fff" />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            style={{ ...styles.nextContainer, backgroundColor: "green" }}
-            onPress={() => {
-              calculateScoreHandler();
-            }}
-          >
-            <Text style={styles.nextText}>SUBMIT</Text>
             <Feather name="arrow-right" size={24} color="#fff" />
           </TouchableOpacity>
         )}
