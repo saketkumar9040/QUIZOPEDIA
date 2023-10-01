@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         fontWeight:"900",
         color:"#f4d03f",
         textAlign:"center",
-        letterSpacing:2
+        letterSpacing:1
       },
       prevNextContainer: {
         flexDirection: "row",
