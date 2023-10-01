@@ -60,7 +60,7 @@ const QuestionCard = ({
         <CountdownCircleTimer
           key={key}
           isPlaying
-          duration={30}
+          duration={3000}
           colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
           colorsTime={[30, 22, 8, 0]}
           size={80}
@@ -111,7 +111,7 @@ const QuestionCard = ({
                   style={
                     ele === selectedOption
                       ? { ...styles.option, backgroundColor: "green" }
-                      : styles.option
+                      : {...styles.option}
                   }
                   onPress={() => {
                     setSelectedOption(ele);
