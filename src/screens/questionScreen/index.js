@@ -14,8 +14,6 @@ const QuestionScreen = ({ navigation, route }) => {
   const [difficulty, setDifficulty] = useState("");
   const [amount, setAmount] = useState(10);
   const [questions, setQuestions] = useState([]);
-  const [lastMinute, setLastMinute] = useState(false);
-  const [score, setScore] = useState(7);
 
   const flatlistRef = useRef();
 

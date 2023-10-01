@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 
 import styles from "./style";
 import tropyLogo from "../../../assets/images/trophyLogo.png";
@@ -15,6 +15,7 @@ import retryButton from "../../../assets/images/retryButton.png";
 import { clearScoreData } from "../../redux/scoreSlice";
 
 const ScoreScreen = ({ navigation, route }) => {
+
   const dispatch = useDispatch();
   const score = route.params.finalScore;
 

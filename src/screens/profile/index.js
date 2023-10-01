@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from "react-native";
 import React from "react";
 import {
@@ -29,10 +30,9 @@ import settingsLogo from "../../../assets/images/settingsIcon.png";
 
 const ProfileScreen = ({ navigation }) => {
   const userData = useSelector((state) => state.auth.userData);
-  console.log(userData);
 
   const changeProfilePicHandler = async () => {
-    console.log("changing profile pic 😎");
+    Alert.alert("work in progress 🚧")
   };
 
   return (
