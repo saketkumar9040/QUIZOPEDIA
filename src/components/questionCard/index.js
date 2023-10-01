@@ -1,26 +1,43 @@
-import { View, Text, FlatList, TouchableOpacity, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import {
-    Feather,
-    FontAwesome,
-    Ionicons,
-    MaterialIcons,
+  Feather,
+  FontAwesome,
+  Ionicons,
+  MaterialIcons,
 } from "@expo/vector-icons";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 import styles from "./style";
 import homeIcon from "../../../assets/images/homeIcon.png";
 import { useDispatch, useSelector } from "react-redux";
-import {  setFinalAnswers, setFinalScore ,clearScoreData } from "../../redux/scoreSlice";
+import {
+  setFinalAnswers,
+  setFinalScore,
+  clearScoreData,
+} from "../../redux/scoreSlice";
 
-const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef }) => {
+const QuestionCard = ({
+  question,
+  index,
+  navigation,
+  isLastIndex,
+  flatlistRef,
+}) => {
+  const dispatch = useDispatch();
+  const finalAnswersList = useSelector((state) => state.score.finalAnswers);
 
-    const dispatch = useDispatch();
-    const finalAnswersList = useSelector(state=>state.score.finalAnswers);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [ timer,setTimer] = useState(5*60)
 
-    const [selectedOption,setSelectedOption] = useState("");
-
-    const correctAnswer = question.correct_answer;
+  const correctAnswer = question.correct_answer;
 
   const options = [
     question.correct_answer,
@@ -29,45 +46,45 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
 
   const calculateScoreHandler = async () => {
     let finalScore = 0;
-      for(let key in finalAnswersList){
-       if(key === finalAnswersList[key]){
-        finalScore ++;
-       }    
+    for (let key in finalAnswersList) {
+      if (key === finalAnswersList[key]) {
+        finalScore++;
       }
-      navigation.navigate("score",{finalScore});
-  }
+    };
+    setTimer(5*60);
+    navigation.navigate("score", { finalScore });
+  };
 
   return (
     <View style={styles.container}>
-        <View style={{alignItems:"center"}}>
-          <CountdownCircleTimer
-              isPlaying
-              duration={5*60}
-              colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
-              colorsTime={[300, 220, 80, 0]}
-              size={80}
-              onComplete={() => calculateScoreHandler()}
-              isSmoothColorTransition
-            >
-              {({ remainingTime }) => {
-                const minutes = Math.floor(remainingTime / 60);
-                const seconds = remainingTime % 60;
-                return (
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontWeight: "900",
-                      color: "#00f7ff",
-                    }}
-                  >
-                    {`${minutes}:${seconds}`}
-                  </Text>
-                );
-              }}
-            </CountdownCircleTimer>
-        </View>
+      <View style={{ alignItems: "center" }}>
+        <CountdownCircleTimer
+          isPlaying
+          duration={timer}
+          colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
+          colorsTime={[300, 220, 80, 0]}
+          size={80}
+          onComplete={() => calculateScoreHandler()}
+          isSmoothColorTransition
+        >
+          {({ remainingTime }) => {
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
+            return (
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "900",
+                  color: "#00f7ff",
+                }}
+              >
+                {`${minutes}:${seconds}`}
+              </Text>
+            );
+          }}
+        </CountdownCircleTimer>
+      </View>
       <View style={styles.questionContainer}>
-       
         <View style={styles.questionHeaderContainer}>
           <TouchableOpacity>
             <MaterialIcons name="bookmarks" size={38} color="#fff" />
@@ -79,61 +96,77 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
         </View>
         <Text style={styles.questionText}>{question.question}</Text>
         <View style={styles.optionsContainer}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {options.map((ele, ind) => {
-            return (
-              <TouchableOpacity
-                key={ind}
-                style={ele === selectedOption ?{...styles.option,backgroundColor:"green"}:styles.option}
-                onPress={() => {
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {options.map((ele, ind) => {
+              return (
+                <TouchableOpacity
+                  key={ind}
+                  style={
+                    ele === selectedOption
+                      ? { ...styles.option, backgroundColor: "green" }
+                      : styles.option
+                  }
+                  onPress={() => {
                     setSelectedOption(ele);
                     const answer = {};
                     answer[`${correctAnswer}`] = ele;
-                    dispatch(setFinalAnswers(answer))
-                }}
-              >
-                <Text style={ele === selectedOption?{...styles.optionText,color:"#fff"}:styles.optionText}>{ele}</Text>
-              </TouchableOpacity>
-            );
-          })}
-           </ScrollView>
-        <TouchableOpacity style={styles.clearResponseContainer} onPress={()=>{
-            setSelectedOption("");
-        }}>
-          <Ionicons name="refresh-circle" size={50} color="#fff" />
-        </TouchableOpacity>
+                    dispatch(setFinalAnswers(answer));
+                  }}
+                >
+                  <Text
+                    style={
+                      ele === selectedOption
+                        ? { ...styles.optionText, color: "#fff" }
+                        : styles.optionText
+                    }
+                  >
+                    {ele}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </ScrollView>
+          <TouchableOpacity
+            style={styles.clearResponseContainer}
+            onPress={() => {
+              setSelectedOption("");
+            }}
+          >
+            <Ionicons name="refresh-circle" size={50} color="#fff" />
+          </TouchableOpacity>
         </View>
-       
       </View>
       <View style={styles.prevNextContainer}>
-
         {index > 0 && (
-          <TouchableOpacity 
-             style={styles.prevContainer}
-             onPress={()=>{
-               flatlistRef.current.scrollToIndex({
-                animated:true,
-                index:index-1,
-               })
-             }}
+          <TouchableOpacity
+            style={styles.prevContainer}
+            onPress={() => {
+              flatlistRef.current.scrollToIndex({
+                animated: true,
+                index: index - 1,
+              });
+            }}
           >
             <Feather name="arrow-left" size={24} color="#fff" />
             <Text style={styles.prevText}>PREV</Text>
           </TouchableOpacity>
         )}
-        <TouchableOpacity onPress={() =>{
-          navigation.navigate("home")}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("home");
+          }}
+        >
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
-        
+
         {!isLastIndex ? (
-          <TouchableOpacity 
-             style={styles.nextContainer}
-             onPress={()=>{
+          <TouchableOpacity
+            style={styles.nextContainer}
+            onPress={() => {
               flatlistRef.current.scrollToIndex({
-               animated:true,
-               index:index+1,
-              })
+                animated: true,
+                index: index + 1,
+              });
             }}
           >
             <Text style={styles.nextText}>NEXT</Text>
@@ -142,13 +175,14 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
         ) : (
           <TouchableOpacity
             style={{ ...styles.nextContainer, backgroundColor: "green" }}
-            onPress={()=>calculateScoreHandler()}
+            onPress={() => {
+              calculateScoreHandler();
+            }}
           >
             <Text style={styles.nextText}>SUBMIT</Text>
             <Feather name="arrow-right" size={24} color="#fff" />
           </TouchableOpacity>
         )}
-
       </View>
     </View>
   );

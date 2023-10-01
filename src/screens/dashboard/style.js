@@ -4,16 +4,14 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:"#fff",
-        paddingTop:20,
-        // alignItems:"center"
+        paddingTop:40,
     },
     logoContainer:{
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
-        elevation:10, 
-        paddingTop:40,  
-        paddingBottom:10
+        elevation:10,  
+        paddingBottom:10,
     },
     logo:{
         width:300,
@@ -24,9 +22,8 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:"row",
         flexWrap:"wrap",
-        marginTop:10,
         padding:5,
-    }
+    },
 });
 
 export default styles;
