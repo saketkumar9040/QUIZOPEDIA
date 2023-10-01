@@ -62,7 +62,9 @@ const styles = StyleSheet.create({
     fontSize:30,
     fontWeight:"900",
     color:"#f4d03f",
-    textAlign:"center"
+    textAlign:"center",
+    paddingHorizontal:20,
+
   },
   smilyCartoonImage:{
     height:300,

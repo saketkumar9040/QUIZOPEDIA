@@ -122,7 +122,6 @@ const QuestionCard = ({ question, index, navigation, isLastIndex ,flatlistRef })
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={() =>{
-          dispatch(clearScore())
           navigation.navigate("home")}}>
           <Image source={homeIcon} style={styles.homeIcon} />
         </TouchableOpacity>
