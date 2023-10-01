@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#F4D03F",
         borderRadius:40,
         width:width-40,
-        marginBottom:40,
+        marginBottom:20,
       },
       questionHeaderContainer:{
         flexDirection:"row",

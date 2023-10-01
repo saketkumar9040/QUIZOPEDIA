@@ -30,7 +30,6 @@ const QuestionCard = ({
 
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [key, setKey] = useState(0);
 
   const correctAnswer = question.correct_answer;
 
@@ -54,19 +53,14 @@ const QuestionCard = ({
       <View style={{ alignItems: "center" }}>
         {!isSubmitted && (
           <CountdownCircleTimer
-            key={key}
             isPlaying
-            duration={3000}
+            duration={30}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[30, 22, 8, 0]}
             size={80}
             isSmoothColorTransition
             onComplete={() => {
-              if (isLastIndex) {
-                calculateScoreHandler();
-              } else {
                 setIsSubmitted(true);
-              }
             }}
           >
             {({ remainingTime }) => {
@@ -168,21 +162,24 @@ const QuestionCard = ({
         )
       }
       <View style={styles.prevNextContainer}>
-        {isSubmitted && (
+        {isSubmitted  && (
           <TouchableOpacity
-            style={styles.nextContainer}
+            style={isLastIndex ?{...styles.nextContainer,backgroundColor:"green"}:styles.nextContainer}
             onPress={() => {
+              !isLastIndex ? 
               flatlistRef.current.scrollToIndex({
                 animated: true,
                 index: index + 1,
-              });
-              setKey(1);
+              }):
+              calculateScoreHandler();
             }}
           >
-            <Text style={styles.nextText}>NEXT</Text>
+            <Text style={styles.nextText}>{isLastIndex ?"GET SCORE":"NEXT"}</Text>
             <Feather name="arrow-right" size={24} color="#fff" />
           </TouchableOpacity>
-        )}
+        )}{
+
+        }
       </View>
     </View>
   );
