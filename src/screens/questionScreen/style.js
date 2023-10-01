@@ -46,6 +46,14 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     color: "#fff",
   },
+  correctAnswerContainer:{
+     flexDirection:"row",
+     alignSelf:"center"
+  },
+  correctAnswerText:{
+      fontSize:22,
+      color:'green'
+  },
   homeIcon: {
     height: 50,
     width: 50,

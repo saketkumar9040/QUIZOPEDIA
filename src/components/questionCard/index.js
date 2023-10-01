@@ -160,6 +160,13 @@ const QuestionCard = ({
           </TouchableOpacity>
         </View>
       </View>
+      {
+        isSubmitted && (
+      <View style={styles.correctAnswerContainer}>
+        <Text style={styles.correctAnswerText}>{`The correct answer is ${correctAnswer}`}</Text>
+      </View>
+        )
+      }
       <View style={styles.prevNextContainer}>
         {isSubmitted && (
           <TouchableOpacity

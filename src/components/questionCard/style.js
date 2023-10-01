@@ -103,12 +103,20 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         color: "#fff",
       },
-      homeIcon: {
-        height: 50,
-        width: 50,
-        resizeMode: "contain",
-        marginVertical: 10,
-      },
+      correctAnswerContainer:{
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"center",
+        width:width-40,
+     },
+     correctAnswerText:{
+      alignSelf:"center",
+         fontSize:22,
+         fontWeight:"800",
+         color:'green',
+         textAlign:"center",
+         paddingHorizontal:40,
+     },
       clearResponseContainer:{
         alignItems:"center",
         marginBottom:5,
