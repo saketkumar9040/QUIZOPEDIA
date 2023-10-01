@@ -68,7 +68,7 @@ const ScoreScreen = ({ navigation, route }) => {
         <TouchableOpacity
           onPress={() => {
             dispatch(clearScoreData());
-            navigation.navigate("home");
+            navigation.navigate("question");
           }}
         >
           <Image source={retryButton} style={styles.retryBotton} />
