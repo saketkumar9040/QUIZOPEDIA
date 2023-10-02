@@ -18,7 +18,7 @@ const ScoreScreen = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
   const score = useSelector(state=>state.score.finalScore)
-  console.log(score)
+  // console.log(score)
 
   const [scoreColor, setScoreColor] = useState("");
   const [greetText, setGreetText] = useState("");

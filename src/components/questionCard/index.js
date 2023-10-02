@@ -32,7 +32,7 @@ const QuestionCard = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const correctAnswer = question.correct_answer;
-  console.log(correctAnswer)
+  // console.log(correctAnswer)
 
   const options = [
     question.correct_answer,
