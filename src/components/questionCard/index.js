@@ -29,12 +29,10 @@ const QuestionCard = ({
 }) => {
   const dispatch = useDispatch();
   const finalAnswersList = useSelector((state) => state.score.finalAnswers);
- 
+
   const [selectedOption, setSelectedOption] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(isSubmit);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   // console.log(isSubmitted)
-  const [isPlaying, setIsPlaying] = useState(!isSubmit);
-  // console.log(isPlaying)
 
   const correctAnswer = question.correct_answer;
   // console.log(correctAnswer)
@@ -49,18 +47,18 @@ const QuestionCard = ({
     let score = 0;
     for (let key in finalAnswersList) {
       if (key === finalAnswersList[key]) {
-        score++
+        score++;
       }
     }
     setIsSubmitted(true);
-    dispatch(setFinalScore({finalScore:score}))
+    dispatch(setFinalScore({ finalScore: score }));
     const newUserData = await setNewScore(score);
     dispatch(updateUserData(newUserData));
     navigation.navigate("score");
     flatlistRef.current.scrollToIndex({
-      animated:true,
-      index:0
-    })
+      animated: true,
+      index: 0,
+    });
   };
 
   return (
@@ -68,14 +66,14 @@ const QuestionCard = ({
       <View style={{ alignItems: "center" }}>
         {!isSubmitted && (
           <CountdownCircleTimer
-            isPlaying={isPlaying}
+            isPlaying
             duration={300}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[300, 220, 80, 0]}
             size={80}
             isSmoothColorTransition
             onComplete={() => {
-              calculateScoreHandler()
+              calculateScoreHandler();
             }}
           >
             {({ remainingTime }) => {
@@ -89,7 +87,7 @@ const QuestionCard = ({
                     color: "#BF40BF",
                   }}
                 >
-                  {`${minutes}:${seconds<10?"0":""}${seconds}`}
+                  {`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}
                 </Text>
               );
             }}
@@ -115,17 +113,24 @@ const QuestionCard = ({
                   {isSubmitted ? (
                     <View
                       style={
-                       ele === selectedOption 
-                          ? { ...styles.option,
-                             backgroundColor: selectedOption===correctAnswer ?"green":"red" }
-                          : styles.option 
+                        ele === selectedOption
+                          ? {
+                              ...styles.option,
+                              backgroundColor:
+                                selectedOption === correctAnswer
+                                  ? "green"
+                                  : "red",
+                            }
+                          : styles.option
                       }
                     >
-                      <Text    style={
+                      <Text
+                        style={
                           ele === selectedOption
                             ? { ...styles.optionText, color: "#fff" }
                             : styles.optionText
-                        }>
+                        }
+                      >
                         {ele}
                       </Text>
                     </View>
@@ -168,46 +173,56 @@ const QuestionCard = ({
           </TouchableOpacity>
         </View>
       </View>
-      {
-        isSubmitted && (
-      <View style={styles.correctAnswerContainer}>
-        <Text style={styles.correctAnswerText}>{`The correct answer is ${correctAnswer}`}</Text>
-      </View>
-        )
-      }
+      {isSubmitted && (
+        <View style={styles.correctAnswerContainer}>
+          <Text
+            style={styles.correctAnswerText}
+          >{`The correct answer is ${correctAnswer}`}</Text>
+        </View>
+      )}
       <View style={styles.prevNextContainer}>
-        {
-          index > 0 ?(
+        {index > 0 ? (
           <TouchableOpacity
             style={styles.prevContainer}
-            onPress={() => { 
+            onPress={() => {
               flatlistRef.current.scrollToIndex({
                 animated: true,
                 index: index - 1,
-              }) 
+              });
             }}
           >
             <Feather name="arrow-left" size={24} color="#fff" />
             <Text style={styles.prevText}>PREV</Text>
           </TouchableOpacity>
-          ):(
-            <View></View>
-          )
-        }
-          <TouchableOpacity
-            style={isLastIndex ?{...styles.nextContainer,backgroundColor:"green"}:styles.nextContainer}
-            onPress={() => {
-              !isLastIndex ? 
-              flatlistRef.current.scrollToIndex({
-                animated: true,
-                index: index + 1,
-              }):
-              calculateScoreHandler();
-            }}
-          >
-            <Text style={styles.nextText}>{isLastIndex ?"SCORE":"NEXT"}</Text>
-            <Feather name="arrow-right" size={24} color="#fff" />
-          </TouchableOpacity>
+        ) : (
+          <View></View>
+        )}
+        {isSubmitted ? (
+          <>
+            <TouchableOpacity
+              style={
+                isLastIndex
+                  ? { ...styles.nextContainer, backgroundColor: "green" }
+                  : styles.nextContainer
+              }
+              onPress={() => {
+                !isLastIndex
+                  ? flatlistRef.current.scrollToIndex({
+                      animated: true,
+                      index: index + 1,
+                    })
+                  : calculateScoreHandler();
+              }}
+            >
+              <Text style={styles.nextText}>
+                {isLastIndex ? "SCORE" : "NEXT"}
+              </Text>
+              <Feather name="arrow-right" size={24} color="#fff" />
+            </TouchableOpacity>
+          </>
+        ) : (
+          <View></View>
+        )}
       </View>
     </View>
   );
