@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
        justifyContent:"space-between",
         paddingHorizontal: 10,
         marginHorizontal: 5,
+        marginVertical:5,
       },
       prevContainer: {
         flexDirection: "row",

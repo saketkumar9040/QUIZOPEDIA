@@ -57,6 +57,9 @@ import {
           email: userDetails.email,
           phone: userDetails.phone,
           password: userDetails.password,
+          score:0,
+          coins:0,
+          totalQuestionSolved:0,
           uid: uid,
           signUpDate: new Date().toISOString(),
         };

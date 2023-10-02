@@ -32,7 +32,7 @@ const QuestionCard = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const correctAnswer = question.correct_answer;
-  // console.log(correctAnswer)
+  console.log(correctAnswer)
 
   const options = [
     question.correct_answer,
@@ -61,7 +61,7 @@ const QuestionCard = ({
         {!isSubmitted && (
           <CountdownCircleTimer
             isPlaying
-            duration={30}
+            duration={300}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[300, 220, 80, 0]}
             size={80}
