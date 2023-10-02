@@ -196,31 +196,43 @@ const QuestionCard = ({
         ) : (
           <View></View>
         )}
-        {isSubmitted ? (
-          <>
-            <TouchableOpacity
-              style={
-                isLastIndex
-                  ? { ...styles.nextContainer, backgroundColor: "green" }
-                  : styles.nextContainer
-              }
-              onPress={() => {
-                !isLastIndex
-                  ? flatlistRef.current.scrollToIndex({
-                      animated: true,
-                      index: index + 1,
-                    })
-                  : calculateScoreHandler();
-              }}
-            >
-              <Text style={styles.nextText}>
-                {isLastIndex ? "SCORE" : "NEXT"}
-              </Text>
-              <Feather name="arrow-right" size={24} color="#fff" />
-            </TouchableOpacity>
-          </>
-        ) : (
-          <View></View>
+        {!isLastIndex &&  (
+          <TouchableOpacity
+            style={
+              isLastIndex
+                ? { ...styles.nextContainer, backgroundColor: "green" }
+                : styles.nextContainer
+            }
+            onPress={() => {
+              !isLastIndex
+                && flatlistRef.current.scrollToIndex({
+                    animated: true,
+                    index: index + 1,
+                  })
+            }}
+          >
+            <Text style={styles.nextText}>
+              {isLastIndex ? "SCORE" : "NEXT"}
+            </Text>
+            <Feather name="arrow-right" size={24} color="#fff" />
+          </TouchableOpacity>
+        )}
+        {isLastIndex && isSubmitted && (
+                 <TouchableOpacity
+                 style={
+                
+                     { ...styles.nextContainer, backgroundColor: "green" }
+                 
+                 }
+                 onPress={() => {
+                    navigation.navigate("score");
+                 }}
+               >
+                 <Text style={styles.nextText}>
+                     SCORE
+                 </Text>
+                 <Feather name="arrow-right" size={24} color="#fff" />
+               </TouchableOpacity>
         )}
       </View>
     </View>
