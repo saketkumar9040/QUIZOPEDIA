@@ -11,11 +11,9 @@ import styles from "./style";
 import logo from "../../../assets/images/dashboardLogo.png";
 import TopicCard from "../../components/topicCard";
 import { subjectList } from "../../../assets/data/subjectList";
-import { useSelector } from "react-redux";
 
 const DashboardScreen = ({ navigation }) => {
-
-  // console.log(useSelector(state=>state.auth.userData))
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>

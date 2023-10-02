@@ -16,7 +16,8 @@ import {
   setFinalScore,
   clearScoreData,
 } from "../../redux/scoreSlice";
-import { isUsingEmbeddedAssets } from "expo-updates";
+import { setNewScore } from "../../utils/updateUserScore";
+import { updateUserData } from "../../redux/authSlice";
 
 const QuestionCard = ({
   question,
@@ -27,6 +28,8 @@ const QuestionCard = ({
 }) => {
   const dispatch = useDispatch();
   const finalAnswersList = useSelector((state) => state.score.finalAnswers);
+  const userData = useSelector(state=>state.auth.userData);
+  // console.log(userData)
 
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -46,7 +49,9 @@ const QuestionCard = ({
         score++
       }
     }
-    dispatch(setFinalScore({finalScore:score}));
+    dispatch(setFinalScore({finalScore:score}))
+    const newUserData = await setNewScore(score,userData.uid);
+    dispatch(updateUserData(newUserData));
     setIsSubmitted(true);
     navigation.navigate("score");
     flatlistRef.current.scrollToIndex({
