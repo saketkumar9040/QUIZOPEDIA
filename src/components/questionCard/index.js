@@ -25,17 +25,19 @@ const QuestionCard = ({
   navigation,
   isLastIndex,
   flatlistRef,
+  isSubmit,
 }) => {
   const dispatch = useDispatch();
   const finalAnswersList = useSelector((state) => state.score.finalAnswers);
-  const userData = useSelector(state=>state.auth.userData);
-  // console.log(userData)
-
+ 
   const [selectedOption, setSelectedOption] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(isSubmit);
+  // console.log(isSubmitted)
+  const [isPlaying, setIsPlaying] = useState(!isSubmit);
+  // console.log(isPlaying)
 
   const correctAnswer = question.correct_answer;
-  console.log(correctAnswer)
+  // console.log(correctAnswer)
 
   const options = [
     question.correct_answer,
@@ -43,16 +45,17 @@ const QuestionCard = ({
   ].sort();
 
   const calculateScoreHandler = async () => {
+    setIsPlaying(false);
     let score = 0;
     for (let key in finalAnswersList) {
       if (key === finalAnswersList[key]) {
         score++
       }
     }
-    dispatch(setFinalScore({finalScore:score}))
-    const newUserData = await setNewScore(score,userData.uid);
-    dispatch(updateUserData(newUserData));
     setIsSubmitted(true);
+    dispatch(setFinalScore({finalScore:score}))
+    const newUserData = await setNewScore(score);
+    dispatch(updateUserData(newUserData));
     navigation.navigate("score");
     flatlistRef.current.scrollToIndex({
       animated:true,
@@ -65,7 +68,7 @@ const QuestionCard = ({
       <View style={{ alignItems: "center" }}>
         {!isSubmitted && (
           <CountdownCircleTimer
-            isPlaying
+            isPlaying={isPlaying}
             duration={300}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[300, 220, 80, 0]}
