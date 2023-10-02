@@ -11,13 +11,14 @@ import { useDispatch, } from "react-redux";
 import styles from "./style";
 import tropyLogo from "../../../assets/images/trophyLogo.png";
 import homeIcon from "../../../assets/images/homeIcon.png";
-import retryButton from "../../../assets/images/retryButton.png";
+import reviewIcon from "../../../assets/images/reviewLogo.png";
 import { clearScoreData } from "../../redux/scoreSlice";
 
 const ScoreScreen = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
   const score = route.params.finalScore;
+  console.log(score)
 
   const [scoreColor, setScoreColor] = useState("");
   const [greetText, setGreetText] = useState("");
@@ -68,11 +69,10 @@ const ScoreScreen = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            dispatch(clearScoreData());
             navigation.navigate("question");
           }}
         >
-          <Image source={retryButton} style={styles.retryBotton} />
+          <Image source={reviewIcon} style={styles.retryBotton} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>

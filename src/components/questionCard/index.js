@@ -30,10 +30,10 @@ const QuestionCard = ({
 
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [key,setKey] = useState(0);
-  const [ isPlaying,setIsPlaying] = useState(true);
+  const [ finalScore,setFinalScore] = useState(0);
 
   const correctAnswer = question.correct_answer;
+  console.log(correctAnswer)
 
   const options = [
     question.correct_answer,
@@ -41,13 +41,17 @@ const QuestionCard = ({
   ].sort();
 
   const calculateScoreHandler = async () => {
-    let finalScore = 0;
     for (let key in finalAnswersList) {
       if (key === finalAnswersList[key]) {
-        finalScore++;
+        setFinalScore(finalScore=>finalScore+1);
       }
     }
+    setIsSubmitted(true);
     navigation.navigate("score", { finalScore });
+    flatlistRef.current.scrollToIndex({
+      animated:true,
+      index:0
+    })
   };
 
   return (
@@ -55,21 +59,14 @@ const QuestionCard = ({
       <View style={{ alignItems: "center" }}>
         {!isSubmitted && (
           <CountdownCircleTimer
-            key={key}
-            isPlaying={isPlaying}
-            duration={30}
+            isPlaying
+            duration={300}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
-            colorsTime={[30, 22, 8, 0]}
+            colorsTime={[300, 220, 80, 0]}
             size={80}
             isSmoothColorTransition
             onComplete={() => {
-                setIsSubmitted(true);
-                setKey(key =>key +1);
-                setIsPlaying(false);
-                return {
-                  newInitialRemainingTime:30,
-                  shouldRepeat:true
-                }
+              calculateScoreHandler()
             }}
           >
             {({ remainingTime }) => {
@@ -83,7 +80,7 @@ const QuestionCard = ({
                     color: "#BF40BF",
                   }}
                 >
-                  {`${minutes}:${seconds}`}
+                  {`${minutes}:${seconds<10?"0":""}${seconds}`}
                 </Text>
               );
             }}
@@ -135,8 +132,6 @@ const QuestionCard = ({
                         const answer = {};
                         answer[`${correctAnswer}`] = ele;
                         dispatch(setFinalAnswers(answer));
-                        setIsSubmitted(true);
-                        setIsPlaying(false)
                       }}
                     >
                       <Text
@@ -172,7 +167,24 @@ const QuestionCard = ({
         )
       }
       <View style={styles.prevNextContainer}>
-        {isSubmitted  && (
+        {
+          index > 0 ?(
+          <TouchableOpacity
+            style={styles.prevContainer}
+            onPress={() => { 
+              flatlistRef.current.scrollToIndex({
+                animated: true,
+                index: index - 1,
+              }) 
+            }}
+          >
+            <Feather name="arrow-left" size={24} color="#fff" />
+            <Text style={styles.prevText}>PREV</Text>
+          </TouchableOpacity>
+          ):(
+            <View></View>
+          )
+        }
           <TouchableOpacity
             style={isLastIndex ?{...styles.nextContainer,backgroundColor:"green"}:styles.nextContainer}
             onPress={() => {
@@ -182,15 +194,11 @@ const QuestionCard = ({
                 index: index + 1,
               }):
               calculateScoreHandler();
-              
             }}
           >
-            <Text style={styles.nextText}>{isLastIndex ?"GET SCORE":"NEXT"}</Text>
+            <Text style={styles.nextText}>{isLastIndex ?"SCORE":"NEXT"}</Text>
             <Feather name="arrow-right" size={24} color="#fff" />
           </TouchableOpacity>
-        )}{
-
-        }
       </View>
     </View>
   );

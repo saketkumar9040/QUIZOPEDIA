@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
       },
       prevNextContainer: {
         flexDirection: "row",
-        alignSelf:"flex-end",
+       alignItemsP:"center",
+       justifyContent:"space-between",
         paddingHorizontal: 10,
         marginHorizontal: 5,
       },
