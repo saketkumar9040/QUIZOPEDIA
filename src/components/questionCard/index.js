@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView, Alert } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import {
   Feather,
@@ -18,6 +18,8 @@ import {
 } from "../../redux/scoreSlice";
 import { setNewScore } from "../../utils/updateUserScore";
 import { updateUserData } from "../../redux/authSlice";
+import { child, get, getDatabase, push, ref } from "firebase/database";
+import { app, auth } from "../../firebase/firebaseConfig";
 
 const QuestionCard = ({
   question,
@@ -27,12 +29,15 @@ const QuestionCard = ({
   flatlistRef,
   isSubmit,
 }) => {
+  const {uid} = auth.currentUser;
   const dispatch = useDispatch();
   const finalAnswersList = useSelector((state) => state.score.finalAnswers);
+  // console.log(finalAnswersList)
 
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  // console.log(isSubmitted)
+  const [ isBookmarked,setIsBookmarked] = useState(false);
+  // console.log(isSubmitted);
 
   const correctAnswer = question.correct_answer;
   // console.log(correctAnswer)
@@ -59,6 +64,31 @@ const QuestionCard = ({
       index: 0,
     });
   };
+
+  const bookmarkHanlder = async (question) => {
+    try {
+      const updatedQuestionData = {
+        ...question,
+        markedAnswer:selectedOption
+      };
+      const dbRef = ref(getDatabase(app));
+      const childRef = child(dbRef,`Bookmarks/${uid}`);
+      const saveData =  await push(childRef,updatedQuestionData);
+
+
+    } catch (error) {
+      console.log(error)
+      Alert.alert("sorry😌","unable to bookmark")
+    }
+  } ;
+
+  const shareQuestionHandler = async (question) => {
+    try {
+      
+    } catch (error) {
+      Alert.alert("sorry😌","unable to bookmark")
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -95,11 +125,13 @@ const QuestionCard = ({
       </View>
       <View style={styles.questionContainer}>
         <View style={styles.questionHeaderContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>{
+            bookmarkHanlder(question)
+          }}>
             <MaterialIcons name="bookmarks" size={38} color="#fff" />
           </TouchableOpacity>
           <Text style={styles.questionNumber}>Question no - {index + 1}</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>shareQuestionHandler(question)}>
             <FontAwesome name="share-alt-square" size={38} color="#fff" />
           </TouchableOpacity>
         </View>
