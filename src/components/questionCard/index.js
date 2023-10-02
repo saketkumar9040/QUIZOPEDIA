@@ -43,7 +43,6 @@ const QuestionCard = ({
   ].sort();
 
   const calculateScoreHandler = async () => {
-    setIsPlaying(false);
     let score = 0;
     for (let key in finalAnswersList) {
       if (key === finalAnswersList[key]) {
@@ -67,7 +66,7 @@ const QuestionCard = ({
         {!isSubmitted && (
           <CountdownCircleTimer
             isPlaying
-            duration={300}
+            duration={30}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[300, 220, 80, 0]}
             size={80}
