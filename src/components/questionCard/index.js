@@ -225,6 +225,10 @@ const QuestionCard = ({
                  
                  }
                  onPress={() => {
+                   flatlistRef.current.scrollToIndex({
+                    animated:true,
+                    index:0
+                   })
                     navigation.navigate("score");
                  }}
                >
