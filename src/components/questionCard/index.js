@@ -30,7 +30,6 @@ const QuestionCard = ({
 
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [ finalScore,setFinalScore] = useState(0);
 
   const correctAnswer = question.correct_answer;
   console.log(correctAnswer)
@@ -41,13 +40,15 @@ const QuestionCard = ({
   ].sort();
 
   const calculateScoreHandler = async () => {
+    let score = 0;
     for (let key in finalAnswersList) {
       if (key === finalAnswersList[key]) {
-        setFinalScore(finalScore=>finalScore+1);
+        score++
       }
     }
+    dispatch(setFinalScore({finalScore:score}));
     setIsSubmitted(true);
-    navigation.navigate("score", { finalScore });
+    navigation.navigate("score");
     flatlistRef.current.scrollToIndex({
       animated:true,
       index:0
@@ -60,7 +61,7 @@ const QuestionCard = ({
         {!isSubmitted && (
           <CountdownCircleTimer
             isPlaying
-            duration={300}
+            duration={30}
             colors={["#00ff00", "#ffff00", "#FFA500", "#A30000"]}
             colorsTime={[300, 220, 80, 0]}
             size={80}
